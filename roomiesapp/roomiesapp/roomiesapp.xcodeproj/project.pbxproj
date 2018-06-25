@@ -1,0 +1,795 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		21053C081D6B3F82BAF864C2 /* Pods_roomiesappUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88160E252BEED1CD9FD37BA4 /* Pods_roomiesappUITests.framework */; };
+		C293458DB62F2C97C7067C3E /* Pods_roomiesappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E300F690E6A42E81055F094 /* Pods_roomiesappTests.framework */; };
+		DD0987C231307E9772CAAA5C /* Pods_roomiesapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16FE14152BD6FD346C5A1C1E /* Pods_roomiesapp.framework */; };
+		E809942520E027F000831924 /* BillCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809942420E027F000831924 /* BillCollectionView.swift */; };
+		E809942920E02FDA00831924 /* addToBillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809942820E02FDA00831924 /* addToBillCell.swift */; };
+		E809942B20E0301B00831924 /* TableCellBill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E809942A20E0301B00831924 /* TableCellBill.swift */; };
+		E813726820C7EA9A0091F263 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813726720C7EA9A0091F263 /* AppDelegate.swift */; };
+		E813726D20C7EA9A0091F263 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E813726B20C7EA9A0091F263 /* Main.storyboard */; };
+		E813726F20C7EAA10091F263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E813726E20C7EAA10091F263 /* Assets.xcassets */; };
+		E813727220C7EAA10091F263 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E813727020C7EAA10091F263 /* LaunchScreen.storyboard */; };
+		E813727D20C7EAA10091F263 /* roomiesappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813727C20C7EAA10091F263 /* roomiesappTests.swift */; };
+		E813728820C7EAA10091F263 /* roomiesappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813728720C7EAA10091F263 /* roomiesappUITests.swift */; };
+		E813729620C7ED210091F263 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E813729520C7ED210091F263 /* GoogleService-Info.plist */; };
+		E813729820C94C290091F263 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813729720C94C290091F263 /* PageViewController.swift */; };
+		E813729A20C9DEC80091F263 /* AddToInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813729920C9DEC80091F263 /* AddToInventory.swift */; };
+		E813729C20C9DFF40091F263 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813729B20C9DFF40091F263 /* Inventory.swift */; };
+		E813729E20CA750A0091F263 /* AddInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813729D20CA750A0091F263 /* AddInventory.swift */; };
+		E81372A020CA81D70091F263 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813729F20CA81D70091F263 /* Calendar.swift */; };
+		E81372A220CA8A900091F263 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81372A120CA8A900091F263 /* CollectionViewCell.swift */; };
+		E81372A420CA8D960091F263 /* CalendarVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81372A320CA8D960091F263 /* CalendarVars.swift */; };
+		E81372AA20D3B6F30091F263 /* InventoryCel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81372A920D3B6F30091F263 /* InventoryCel.swift */; };
+		E81372AE20D7970D0091F263 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81372AD20D7970C0091F263 /* Login.swift */; };
+		E821AB3C20DBA16C0011DB48 /* BillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E821AB3B20DBA16B0011DB48 /* BillCell.swift */; };
+		E8273D1A20DBD5EC0021F861 /* AddToBills.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8273D1920DBD5EC0021F861 /* AddToBills.swift */; };
+		E8273D1C20DC35460021F861 /* AddRoommate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8273D1B20DC35460021F861 /* AddRoommate.swift */; };
+		E85232A120D915210000F7E8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85232A020D915210000F7E8 /* Settings.swift */; };
+		E85232A320D9155E0000F7E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85232A220D9155D0000F7E8 /* ViewController.swift */; };
+		E85232A720D923490000F7E8 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85232A620D923490000F7E8 /* SettingsCell.swift */; };
+		E85232AB20D929960000F7E8 /* BillsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85232AA20D929960000F7E8 /* BillsTableViewController.swift */; };
+		E8EE7C8820DC5AE400CCFA99 /* AddRoommateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EE7C8720DC5AE400CCFA99 /* AddRoommateCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E813727920C7EAA10091F263 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E813725C20C7EA9A0091F263 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E813726320C7EA9A0091F263;
+			remoteInfo = roomiesapp;
+		};
+		E813728420C7EAA10091F263 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E813725C20C7EA9A0091F263 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E813726320C7EA9A0091F263;
+			remoteInfo = roomiesapp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		16FE14152BD6FD346C5A1C1E /* Pods_roomiesapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_roomiesapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1794F0F22BCA745E70928749 /* Pods-roomiesapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roomiesapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-roomiesapp/Pods-roomiesapp.release.xcconfig"; sourceTree = "<group>"; };
+		51C28394008FAA52FD6CC26F /* Pods-roomiesappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roomiesappTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-roomiesappTests/Pods-roomiesappTests.debug.xcconfig"; sourceTree = "<group>"; };
+		88160E252BEED1CD9FD37BA4 /* Pods_roomiesappUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_roomiesappUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90034595534EE445426E99BD /* Pods-roomiesappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roomiesappTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-roomiesappTests/Pods-roomiesappTests.release.xcconfig"; sourceTree = "<group>"; };
+		9E300F690E6A42E81055F094 /* Pods_roomiesappTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_roomiesappTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9D8F4240273E1A1A75FED8D /* Pods-roomiesapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roomiesapp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-roomiesapp/Pods-roomiesapp.debug.xcconfig"; sourceTree = "<group>"; };
+		B8E20C16D75CD03E9BBCBCF8 /* Pods-roomiesappUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roomiesappUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-roomiesappUITests/Pods-roomiesappUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E809942420E027F000831924 /* BillCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCollectionView.swift; sourceTree = "<group>"; };
+		E809942820E02FDA00831924 /* addToBillCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addToBillCell.swift; sourceTree = "<group>"; };
+		E809942A20E0301B00831924 /* TableCellBill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellBill.swift; sourceTree = "<group>"; };
+		E813726420C7EA9A0091F263 /* roomiesapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = roomiesapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E813726720C7EA9A0091F263 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E813726C20C7EA9A0091F263 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E813726E20C7EAA10091F263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E813727120C7EAA10091F263 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E813727320C7EAA10091F263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E813727820C7EAA10091F263 /* roomiesappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = roomiesappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E813727C20C7EAA10091F263 /* roomiesappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roomiesappTests.swift; sourceTree = "<group>"; };
+		E813727E20C7EAA10091F263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E813728320C7EAA10091F263 /* roomiesappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = roomiesappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E813728720C7EAA10091F263 /* roomiesappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roomiesappUITests.swift; sourceTree = "<group>"; };
+		E813728920C7EAA10091F263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E813729520C7ED210091F263 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E813729720C94C290091F263 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		E813729920C9DEC80091F263 /* AddToInventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToInventory.swift; sourceTree = "<group>"; };
+		E813729B20C9DFF40091F263 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		E813729D20CA750A0091F263 /* AddInventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInventory.swift; sourceTree = "<group>"; };
+		E813729F20CA81D70091F263 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		E81372A120CA8A900091F263 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		E81372A320CA8D960091F263 /* CalendarVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVars.swift; sourceTree = "<group>"; };
+		E81372A920D3B6F30091F263 /* InventoryCel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCel.swift; sourceTree = "<group>"; };
+		E81372AD20D7970C0091F263 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		E821AB3B20DBA16B0011DB48 /* BillCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillCell.swift; sourceTree = "<group>"; };
+		E8273D1920DBD5EC0021F861 /* AddToBills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToBills.swift; sourceTree = "<group>"; };
+		E8273D1B20DC35460021F861 /* AddRoommate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoommate.swift; sourceTree = "<group>"; };
+		E85232A020D915210000F7E8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		E85232A220D9155D0000F7E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = /Users/gebruiker/Desktop/AppProject/roomiesapp/roomiesapp/roomiesapp/ViewController.swift; sourceTree = "<absolute>"; };
+		E85232A620D923490000F7E8 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		E85232AA20D929960000F7E8 /* BillsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillsTableViewController.swift; sourceTree = "<group>"; };
+		E8EE7C8720DC5AE400CCFA99 /* AddRoommateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoommateCell.swift; sourceTree = "<group>"; };
+		EE003235A18B07A92172B25D /* Pods-roomiesappUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roomiesappUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-roomiesappUITests/Pods-roomiesappUITests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E813726120C7EA9A0091F263 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD0987C231307E9772CAAA5C /* Pods_roomiesapp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E813727520C7EAA10091F263 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C293458DB62F2C97C7067C3E /* Pods_roomiesappTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E813728020C7EAA10091F263 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21053C081D6B3F82BAF864C2 /* Pods_roomiesappUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5368C493C2FA88E81189C938 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				16FE14152BD6FD346C5A1C1E /* Pods_roomiesapp.framework */,
+				9E300F690E6A42E81055F094 /* Pods_roomiesappTests.framework */,
+				88160E252BEED1CD9FD37BA4 /* Pods_roomiesappUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E2ED2E86F92BA3431BB4AC53 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A9D8F4240273E1A1A75FED8D /* Pods-roomiesapp.debug.xcconfig */,
+				1794F0F22BCA745E70928749 /* Pods-roomiesapp.release.xcconfig */,
+				51C28394008FAA52FD6CC26F /* Pods-roomiesappTests.debug.xcconfig */,
+				90034595534EE445426E99BD /* Pods-roomiesappTests.release.xcconfig */,
+				B8E20C16D75CD03E9BBCBCF8 /* Pods-roomiesappUITests.debug.xcconfig */,
+				EE003235A18B07A92172B25D /* Pods-roomiesappUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E813725B20C7EA9A0091F263 = {
+			isa = PBXGroup;
+			children = (
+				E813726620C7EA9A0091F263 /* roomiesapp */,
+				E813727B20C7EAA10091F263 /* roomiesappTests */,
+				E813728620C7EAA10091F263 /* roomiesappUITests */,
+				E813726520C7EA9A0091F263 /* Products */,
+				E2ED2E86F92BA3431BB4AC53 /* Pods */,
+				5368C493C2FA88E81189C938 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E813726520C7EA9A0091F263 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E813726420C7EA9A0091F263 /* roomiesapp.app */,
+				E813727820C7EAA10091F263 /* roomiesappTests.xctest */,
+				E813728320C7EAA10091F263 /* roomiesappUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E813726620C7EA9A0091F263 /* roomiesapp */ = {
+			isa = PBXGroup;
+			children = (
+				E809942820E02FDA00831924 /* addToBillCell.swift */,
+				E813729D20CA750A0091F263 /* AddInventory.swift */,
+				E8273D1B20DC35460021F861 /* AddRoommate.swift */,
+				E8EE7C8720DC5AE400CCFA99 /* AddRoommateCell.swift */,
+				E8273D1920DBD5EC0021F861 /* AddToBills.swift */,
+				E813729920C9DEC80091F263 /* AddToInventory.swift */,
+				E813726720C7EA9A0091F263 /* AppDelegate.swift */,
+				E809942A20E0301B00831924 /* TableCellBill.swift */,
+				E813726E20C7EAA10091F263 /* Assets.xcassets */,
+				E821AB3B20DBA16B0011DB48 /* BillCell.swift */,
+				E85232AA20D929960000F7E8 /* BillsTableViewController.swift */,
+				E813729F20CA81D70091F263 /* Calendar.swift */,
+				E81372A320CA8D960091F263 /* CalendarVars.swift */,
+				E81372A120CA8A900091F263 /* CollectionViewCell.swift */,
+				E809942420E027F000831924 /* BillCollectionView.swift */,
+				E813729520C7ED210091F263 /* GoogleService-Info.plist */,
+				E813727320C7EAA10091F263 /* Info.plist */,
+				E813729B20C9DFF40091F263 /* Inventory.swift */,
+				E81372A920D3B6F30091F263 /* InventoryCel.swift */,
+				E813727020C7EAA10091F263 /* LaunchScreen.storyboard */,
+				E81372AD20D7970C0091F263 /* Login.swift */,
+				E813726B20C7EA9A0091F263 /* Main.storyboard */,
+				E813729720C94C290091F263 /* PageViewController.swift */,
+				E85232A020D915210000F7E8 /* Settings.swift */,
+				E85232A620D923490000F7E8 /* SettingsCell.swift */,
+				E85232A220D9155D0000F7E8 /* ViewController.swift */,
+			);
+			path = roomiesapp;
+			sourceTree = "<group>";
+		};
+		E813727B20C7EAA10091F263 /* roomiesappTests */ = {
+			isa = PBXGroup;
+			children = (
+				E813727C20C7EAA10091F263 /* roomiesappTests.swift */,
+				E813727E20C7EAA10091F263 /* Info.plist */,
+			);
+			path = roomiesappTests;
+			sourceTree = "<group>";
+		};
+		E813728620C7EAA10091F263 /* roomiesappUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E813728720C7EAA10091F263 /* roomiesappUITests.swift */,
+				E813728920C7EAA10091F263 /* Info.plist */,
+			);
+			path = roomiesappUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E813726320C7EA9A0091F263 /* roomiesapp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E813728C20C7EAA10091F263 /* Build configuration list for PBXNativeTarget "roomiesapp" */;
+			buildPhases = (
+				BAA0B66F8E490ED682551A74 /* [CP] Check Pods Manifest.lock */,
+				E813726020C7EA9A0091F263 /* Sources */,
+				E813726120C7EA9A0091F263 /* Frameworks */,
+				E813726220C7EA9A0091F263 /* Resources */,
+				48A126B1B4A618760579FD89 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = roomiesapp;
+			productName = roomiesapp;
+			productReference = E813726420C7EA9A0091F263 /* roomiesapp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E813727720C7EAA10091F263 /* roomiesappTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E813728F20C7EAA10091F263 /* Build configuration list for PBXNativeTarget "roomiesappTests" */;
+			buildPhases = (
+				A713C458E70BA2418FA9CD36 /* [CP] Check Pods Manifest.lock */,
+				E813727420C7EAA10091F263 /* Sources */,
+				E813727520C7EAA10091F263 /* Frameworks */,
+				E813727620C7EAA10091F263 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E813727A20C7EAA10091F263 /* PBXTargetDependency */,
+			);
+			name = roomiesappTests;
+			productName = roomiesappTests;
+			productReference = E813727820C7EAA10091F263 /* roomiesappTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E813728220C7EAA10091F263 /* roomiesappUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E813729220C7EAA10091F263 /* Build configuration list for PBXNativeTarget "roomiesappUITests" */;
+			buildPhases = (
+				C6F0686170E3FA0132323F16 /* [CP] Check Pods Manifest.lock */,
+				E813727F20C7EAA10091F263 /* Sources */,
+				E813728020C7EAA10091F263 /* Frameworks */,
+				E813728120C7EAA10091F263 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E813728520C7EAA10091F263 /* PBXTargetDependency */,
+			);
+			name = roomiesappUITests;
+			productName = roomiesappUITests;
+			productReference = E813728320C7EAA10091F263 /* roomiesappUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E813725C20C7EA9A0091F263 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = Gebruiker;
+				TargetAttributes = {
+					E813726320C7EA9A0091F263 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					E813727720C7EAA10091F263 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = E813726320C7EA9A0091F263;
+					};
+					E813728220C7EAA10091F263 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = E813726320C7EA9A0091F263;
+					};
+				};
+			};
+			buildConfigurationList = E813725F20C7EA9A0091F263 /* Build configuration list for PBXProject "roomiesapp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E813725B20C7EA9A0091F263;
+			productRefGroup = E813726520C7EA9A0091F263 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E813726320C7EA9A0091F263 /* roomiesapp */,
+				E813727720C7EAA10091F263 /* roomiesappTests */,
+				E813728220C7EAA10091F263 /* roomiesappUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E813726220C7EA9A0091F263 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E813727220C7EAA10091F263 /* LaunchScreen.storyboard in Resources */,
+				E813729620C7ED210091F263 /* GoogleService-Info.plist in Resources */,
+				E813726F20C7EAA10091F263 /* Assets.xcassets in Resources */,
+				E813726D20C7EA9A0091F263 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E813727620C7EAA10091F263 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E813728120C7EAA10091F263 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		48A126B1B4A618760579FD89 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-roomiesapp/Pods-roomiesapp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-roomiesapp/Pods-roomiesapp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A713C458E70BA2418FA9CD36 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-roomiesappTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BAA0B66F8E490ED682551A74 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-roomiesapp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6F0686170E3FA0132323F16 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-roomiesappUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E813726020C7EA9A0091F263 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E81372AA20D3B6F30091F263 /* InventoryCel.swift in Sources */,
+				E813729A20C9DEC80091F263 /* AddToInventory.swift in Sources */,
+				E85232AB20D929960000F7E8 /* BillsTableViewController.swift in Sources */,
+				E81372A220CA8A900091F263 /* CollectionViewCell.swift in Sources */,
+				E813729E20CA750A0091F263 /* AddInventory.swift in Sources */,
+				E809942520E027F000831924 /* BillCollectionView.swift in Sources */,
+				E85232A720D923490000F7E8 /* SettingsCell.swift in Sources */,
+				E809942B20E0301B00831924 /* TableCellBill.swift in Sources */,
+				E821AB3C20DBA16C0011DB48 /* BillCell.swift in Sources */,
+				E813729C20C9DFF40091F263 /* Inventory.swift in Sources */,
+				E85232A120D915210000F7E8 /* Settings.swift in Sources */,
+				E8EE7C8820DC5AE400CCFA99 /* AddRoommateCell.swift in Sources */,
+				E85232A320D9155E0000F7E8 /* ViewController.swift in Sources */,
+				E813726820C7EA9A0091F263 /* AppDelegate.swift in Sources */,
+				E809942920E02FDA00831924 /* addToBillCell.swift in Sources */,
+				E81372A420CA8D960091F263 /* CalendarVars.swift in Sources */,
+				E813729820C94C290091F263 /* PageViewController.swift in Sources */,
+				E8273D1A20DBD5EC0021F861 /* AddToBills.swift in Sources */,
+				E8273D1C20DC35460021F861 /* AddRoommate.swift in Sources */,
+				E81372AE20D7970D0091F263 /* Login.swift in Sources */,
+				E81372A020CA81D70091F263 /* Calendar.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E813727420C7EAA10091F263 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E813727D20C7EAA10091F263 /* roomiesappTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E813727F20C7EAA10091F263 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E813728820C7EAA10091F263 /* roomiesappUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E813727A20C7EAA10091F263 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E813726320C7EA9A0091F263 /* roomiesapp */;
+			targetProxy = E813727920C7EAA10091F263 /* PBXContainerItemProxy */;
+		};
+		E813728520C7EAA10091F263 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E813726320C7EA9A0091F263 /* roomiesapp */;
+			targetProxy = E813728420C7EAA10091F263 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E813726B20C7EA9A0091F263 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E813726C20C7EA9A0091F263 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E813727020C7EAA10091F263 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E813727120C7EAA10091F263 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E813728A20C7EAA10091F263 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E813728B20C7EAA10091F263 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E813728D20C7EAA10091F263 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9D8F4240273E1A1A75FED8D /* Pods-roomiesapp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = roomiesapp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = milou.roomiesapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E813728E20C7EAA10091F263 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1794F0F22BCA745E70928749 /* Pods-roomiesapp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = roomiesapp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = milou.roomiesapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E813729020C7EAA10091F263 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51C28394008FAA52FD6CC26F /* Pods-roomiesappTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = roomiesappTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = milou.roomiesappTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/roomiesapp.app/roomiesapp";
+			};
+			name = Debug;
+		};
+		E813729120C7EAA10091F263 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90034595534EE445426E99BD /* Pods-roomiesappTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = roomiesappTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = milou.roomiesappTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/roomiesapp.app/roomiesapp";
+			};
+			name = Release;
+		};
+		E813729320C7EAA10091F263 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8E20C16D75CD03E9BBCBCF8 /* Pods-roomiesappUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = roomiesappUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = milou.roomiesappUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = roomiesapp;
+			};
+			name = Debug;
+		};
+		E813729420C7EAA10091F263 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE003235A18B07A92172B25D /* Pods-roomiesappUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = roomiesappUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = milou.roomiesappUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = roomiesapp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E813725F20C7EA9A0091F263 /* Build configuration list for PBXProject "roomiesapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E813728A20C7EAA10091F263 /* Debug */,
+				E813728B20C7EAA10091F263 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E813728C20C7EAA10091F263 /* Build configuration list for PBXNativeTarget "roomiesapp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E813728D20C7EAA10091F263 /* Debug */,
+				E813728E20C7EAA10091F263 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E813728F20C7EAA10091F263 /* Build configuration list for PBXNativeTarget "roomiesappTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E813729020C7EAA10091F263 /* Debug */,
+				E813729120C7EAA10091F263 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E813729220C7EAA10091F263 /* Build configuration list for PBXNativeTarget "roomiesappUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E813729320C7EAA10091F263 /* Debug */,
+				E813729420C7EAA10091F263 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E813725C20C7EA9A0091F263 /* Project object */;
+}
