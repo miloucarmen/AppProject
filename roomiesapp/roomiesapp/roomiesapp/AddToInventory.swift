@@ -17,7 +17,7 @@ class AddToInventory: UITableViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var Number: UIPickerView!
     
-    var inventory: AddInventory?
+    var inventory: overallData?
     var numberArr = [Int]()
     var ref: DatabaseReference!
     let username = Login.UsersInfo.username
@@ -64,8 +64,8 @@ class AddToInventory: UITableViewController, UIPickerViewDelegate, UIPickerViewD
         ref = Database.database().reference()
         
         if let inventory = inventory {
-            itemTextField.text = inventory.whatToAdd
-            numberLabel.text = inventory.amount
+            itemTextField.text = inventory.what[0]
+            numberLabel.text = inventory.priceOrAmount[0]
         }
         
         Number.dataSource = self
@@ -84,8 +84,17 @@ class AddToInventory: UITableViewController, UIPickerViewDelegate, UIPickerViewD
         guard segue.identifier == "saveUnwind" else {
             return
         }
-        self.ref?.child("Users").child("\(username)").child("inventory").updateChildValues(["\(itemTextField.text!)": numberLabel.text])
-
+        
+        if let inventory = inventory {
+            let Item = ["\(itemTextField.text!)": numberLabel.text ?? "1"]
+            let updates = ["/\(inventory.whoPutInList)/inventory/\(inventory.keys[0])/": Item]
+            ref.updateChildValues(updates)
+            
+        } else {
+            self.ref?.child("\(username)").child("inventory").childByAutoId().updateChildValues(["\(itemTextField.text!)": numberLabel.text ?? "1"])
+            print("Saved")
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {

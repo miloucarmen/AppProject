@@ -23,7 +23,7 @@ class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataS
     @IBOutlet weak var switchButton: UISwitch!
     
     
-    var Bill: billData?
+    var Bill: overallData?
     var ref: DatabaseReference!
     var NumberArr: [Int] = []
     var j = 0
@@ -94,7 +94,7 @@ class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataS
 
         if let Bill = Bill {
             DescriptionTextField.text = Bill.what[0]
-            priceLabel.text = Bill.price[0]
+            priceLabel.text = Bill.priceOrAmount[0]
         }
 
         pricePicker.dataSource = self

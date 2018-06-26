@@ -11,14 +11,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-struct friendRequest {
-    var Name = String()
-    var Accepted = Bool()
-}
 
-struct PendingRequest {
-    var Name = String()
-}
 
 
 

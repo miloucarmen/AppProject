@@ -9,36 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-struct billData {
-    var roommate = String()
-    var what = [String]()
-    var price = [String]()
-    var keys = [String]()
-    var withWho = [[String]]()
-    
-    mutating func removeAllData() {
-        what.removeAll()
-        price.removeAll()
-        keys.removeAll()
-        withWho.removeAll()
-    }
-    
-    mutating func AddWhat(addWhat: String) {
-        what.append(addWhat)
-    }
-    
-    mutating func AddPrice(addPrice: String) {
-        price.append(addPrice)
-    }
-    
-    mutating func AddKeys(addKeys: String) {
-        keys.append(addKeys)
-    }
-    
-    mutating func AddWho(addWho: [String]) {
-        withWho.append(addWho)
-    }
-}
+
 
 struct OpenClose {
     var opened = Bool()
@@ -56,7 +27,7 @@ class BillsTableViewController: UITableViewController {
     
     
     // load in from firebase
-    var data = [billData]()
+    var data = [overallData]()
     var openClose = [OpenClose]()
     var i = 0
     var withWho = [[String]]()
@@ -79,7 +50,7 @@ class BillsTableViewController: UITableViewController {
                 print("IN HANDELLLL NOW FOR: ",name)
                 
                 if self.data.count < self.roommates.count {
-                    self.data.append(billData(roommate: name, what: [""], price: [""], keys: [""], withWho: [[]]))
+                    self.data.append(overallData(roommate: name, what: [""], priceOrAmount: [""], keys: [""], withWho: [[]], whoPutInList: [""]))
                     print("Data die net alleen met naam gevuld is",self.data)
 
                 }
@@ -101,18 +72,18 @@ class BillsTableViewController: UITableViewController {
                                 let amount = items.value as? String
                                 
                                 if let amountIs = amount {
-                                    self.data[index].AddPrice(addPrice: amountIs)
+                                    self.data[index].AddPrice(addPriceOrAmount: amountIs)
                                 
                                 }
                             }
                         }
                     }
-                    print("")
-                    print("EVERYTHING IS HERE",self.data)
-                    print("")
-                    self.tableView.reloadData()
-                    self.tableView.reloadSectionIndexTitles()
                 }
+                print("")
+                print("EVERYTHING IS HERE",self.data)
+                print("")
+                self.tableView.reloadData()
+                self.tableView.reloadSectionIndexTitles()
             })
         }
     }
@@ -129,6 +100,7 @@ class BillsTableViewController: UITableViewController {
         if !openClose[section].opened {
             return 0
         }
+        print("Section \(section) has \(data[section].what.count) rows")
         return data[section].what.count
         
         
@@ -138,7 +110,7 @@ class BillsTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellID") as? BillCell else {
             fatalError("Could not dequeue a cell") }
         cell.Item.text = self.data[indexPath.section].what[indexPath.row]
-        cell.Costs.text = self.data[indexPath.section].price[indexPath.row]
+        cell.Costs.text = self.data[indexPath.section].priceOrAmount[indexPath.row]
         return cell
     
     }
@@ -187,7 +159,7 @@ class BillsTableViewController: UITableViewController {
             var itemInList = 0
 //            print("person info",j)
 //
-            for bill in data[index].price {
+            for bill in data[index].priceOrAmount {
 
                 if index == section {
                     voorgeschoten += (Double(bill)! / Double(data[index].withWho[itemInList].count))
@@ -251,7 +223,7 @@ class BillsTableViewController: UITableViewController {
             withWho.append(data[indexPath.section].withWho[indexPath.row])
             print(withWho)
             print(selectedItem.roommate)
-            let sendData = billData(roommate: selectedItem.roommate, what: [selectedItem.what[indexPath.row]], price: [selectedItem.price[indexPath.row]], keys: [selectedItem.keys[indexPath.row]], withWho: withWho)
+            let sendData = overallData(roommate: selectedItem.roommate, what: [selectedItem.what[indexPath.row]], priceOrAmount: [selectedItem.priceOrAmount[indexPath.row]], keys: [selectedItem.keys[indexPath.row]], withWho: withWho, whoPutInList: [""])
             print("Data die wordt gestuurd", sendData)
             
             BillViewController.Bill = sendData
