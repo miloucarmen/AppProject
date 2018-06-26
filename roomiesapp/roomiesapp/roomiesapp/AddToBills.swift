@@ -121,22 +121,25 @@ class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataS
         print("Trying to save......")
         
         if let Bill = Bill {
-            self.ref = self.ref?.child("\(username)").child("Bills").child(Bill.keys[0])
+
+            let ItemPrice = ["\(DescriptionTextField.text!)": priceLabel.text!,
+                             "withWho": ["roommate1": "miloucarmen", "roommate2": "lol"]] as [String : Any]
+           
             
-            self.ref?.updateChildValues(["\(DescriptionTextField.text!)": priceLabel.text!])
-            self.ref = self.ref?.child("withWho")
-            let bill = ["roommate1": "miloucarmen", "roommate2": "lol"]
-            self.ref?.setValue(bill)
+            let updates = ["/\(username)/Bills/\(Bill.keys[0])/": ItemPrice]
+            ref.updateChildValues(updates)
             
             print("updated")
         } else {
-            self.ref = self.ref?.child("\(username)").child("Bills").childByAutoId()
             
+            let key = ref.child("\(username)").child("Bills").childByAutoId().key
+            let ItemPrice = ["\(DescriptionTextField.text!)": priceLabel.text!,
+                             "withWho": ["roommate1": "miloucarmen", "roommate2": "lol"]] as [String : Any]
             
-            self.ref?.updateChildValues(["\(DescriptionTextField.text!)": priceLabel.text!])
-            self.ref = self.ref?.child("withWho")
-            let bill = ["roommate1": "miloucarmen", "roommate2": "lol"]
-            self.ref?.setValue(bill)
+            let updates = ["/\(username)/Bills/\(key)/": ItemPrice]
+            
+            ref.updateChildValues(updates)
+
             print("saved")}
         
     }

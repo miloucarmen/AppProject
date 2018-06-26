@@ -82,15 +82,10 @@ class AddToInventory: UITableViewController, UIPickerViewDelegate, UIPickerViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         guard segue.identifier == "saveUnwind" else {
-//            print("cancelling")
             return
         }
-        
-//        print("Trying to save......")
-        
-        self.ref?.child("Users").child("\(username)").child("inventory").setValue(["\(itemTextField.text!)": numberLabel.text])
-//        print("saved")
-        
+        self.ref?.child("Users").child("\(username)").child("inventory").updateChildValues(["\(itemTextField.text!)": numberLabel.text])
+
     }
     
     override func didReceiveMemoryWarning() {

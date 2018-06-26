@@ -15,6 +15,29 @@ struct billData {
     var price = [String]()
     var keys = [String]()
     var withWho = [[String]]()
+    
+    mutating func removeAllData() {
+        what.removeAll()
+        price.removeAll()
+        keys.removeAll()
+        withWho.removeAll()
+    }
+    
+    mutating func AddWhat(addWhat: String) {
+        what.append(addWhat)
+    }
+    
+    mutating func AddPrice(addPrice: String) {
+        price.append(addPrice)
+    }
+    
+    mutating func AddKeys(addKeys: String) {
+        keys.append(addKeys)
+    }
+    
+    mutating func AddWho(addWho: [String]) {
+        withWho.append(addWho)
+    }
 }
 
 struct OpenClose {
@@ -34,93 +57,69 @@ class BillsTableViewController: UITableViewController {
     
     // load in from firebase
     var data = [billData]()
-    var item: [String] = []
-    var keys: [String] = []
-    var costs: [String] = []
-    var withWho = [[String]]()
     var openClose = [OpenClose]()
     var i = 0
-    
+    var withWho = [[String]]()
+    var loadTable = false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
+        
         for _ in roommates {
             openClose.append(OpenClose(opened: false))
             print(openClose)
         }
-        
-        for name in roommates {
-            print(name)
+  
+        for (index, name) in roommates.enumerated(){
+            print("\(name)")
             
             dataBaseHandle = ref?.child("\(name)").child("Bills").observe(.value, with: { (snapshot) in
                 print("IN HANDELLLL NOW FOR: ",name)
                 
-                // checks if data was already filled or not
-                
-                
                 if self.data.count < self.roommates.count {
-                    while name != self.roommates[self.i] {
-                        self.i += 1
-                    }
-                } else {
-                    while name != self.data[self.i].roommate{
-                        self.i += 1
-                    }
+                    self.data.append(billData(roommate: name, what: [""], price: [""], keys: [""], withWho: [[]]))
+                    print("Data die net alleen met naam gevuld is",self.data)
+
                 }
-                
-                
-                if self.data.count > self.i {
-                    print("This data Will be removed")
-                    self.data.remove(at: self.i)
-                    
-                }
-                
-                self.keys.removeAll()
-                self.item.removeAll()
-                self.costs.removeAll()
-                self.withWho.removeAll()
-                
-                if snapshot.childrenCount >= 0 {
+
+                self.data[index].removeAllData()
+
+                if snapshot.childrenCount > 0 {
                     for itemskeys in snapshot.children.allObjects as! [DataSnapshot] {
-//                        print(itemskeys)
-                        self.keys.append(itemskeys.key)
+                        
+                        self.data[index].AddKeys(addKeys: itemskeys.key)
                         for items in itemskeys.children.allObjects as! [DataSnapshot] {
                             
                             if items.key == "withWho" {
                                 if let dataWithWho = items.value as? [String: String] {
-                                    self.withWho.append(Array(dataWithWho.values))
-                                    print("With who will it be shared",self.withWho)
+                                    self.data[index].AddWho(addWho: Array(dataWithWho.values))
                                 }
                             } else {
-                                self.item.append("\(items.key)")
+                                self.data[index].AddWhat(addWhat: items.key)
                                 let amount = items.value as? String
                                 
                                 if let amountIs = amount {
-                                    self.costs.append(amountIs)
-//                                    print(self.costs)
+                                    self.data[index].AddPrice(addPrice: amountIs)
                                 
                                 }
                             }
                         }
                     }
-                    self.data.append(billData(roommate: name, what: self.item, price: self.costs, keys: self.keys, withWho: self.withWho))
                     print("")
                     print("EVERYTHING IS HERE",self.data)
                     print("")
                     self.tableView.reloadData()
                     self.tableView.reloadSectionIndexTitles()
                 }
-                self.i = 0
-
-                
             })
-    
         }
     }
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        print("Data Count is",data.count)
         return data.count
     }
     
@@ -179,29 +178,26 @@ class BillsTableViewController: UITableViewController {
     func WieBetaaltWat (section: Int) -> Double {
         
         var voorgeschoten: Double = 0
-        print("alll data", data[section])
 //        print("header for section",section)
 //        print("which roommate are we looking at", section)
 //
 //        print("\(0...data.count)")
 //
-        for j in 0...(data.count - 1) {
-            print("How many people",data.count)
-            var i = 0
+        for (index, _) in data.enumerated() {
+            var itemInList = 0
 //            print("person info",j)
 //
-            for bill in data[j].price {
-//
-                if j == section {
-                    voorgeschoten += (Double(bill)! / Double(data[j].withWho[i].count))
+            for bill in data[index].price {
+
+                if index == section {
+                    voorgeschoten += (Double(bill)! / Double(data[index].withWho[itemInList].count))
                 }
-                if j != section && data[j].withWho[i].contains(username){
-                    voorgeschoten -= (Double(bill)! / Double(data[j].withWho[i].count))
+                if index != section && data[index].withWho[itemInList].contains(username){
+                    voorgeschoten -= (Double(bill)! / Double(data[index].withWho[itemInList].count))
                 }
-                i += 1
+                itemInList += 1
             }
         }
-        i = 0
         return voorgeschoten
     }
     
@@ -260,16 +256,11 @@ class BillsTableViewController: UITableViewController {
             
             BillViewController.Bill = sendData
         }
-//        if segue.identifier == "Cancel" {
-//
-//        }
     }
     
     
     
     @IBAction func unwindBills(_ sender: UIStoryboardSegue){
-    
-        
-        
+  
     }
 }
