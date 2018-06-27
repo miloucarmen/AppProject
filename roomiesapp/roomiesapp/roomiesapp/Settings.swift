@@ -15,88 +15,76 @@ import FirebaseAuth
 
 
 
-class Settings: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class Settings: UIViewController, UITableViewDataSource, UITableViewDelegate, SettingsCellDelegate {
     
     
     
     @IBOutlet weak var settignsTableView: UITableView!
     
+    
+    let sortOfFriends = ["PendingFriendRequests", "FriendRequests", "Roommate"]
     var ref: DatabaseReference!
     var dataBaseHandle: DatabaseHandle?
     var list: [String] = []
-    var requests = [friendRequest]()
-    var pendings = [PendingRequest]()
+    var FriendInfo = [MyFriendRequestInfo]()
+    var roundButton = UIButton()
     var username = Login.UsersInfo.username
     
-    var requestName: String = ""
-    var pendingName: String = ""
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        settignsTableView.allowsSelection = false
         settignsTableView.delegate = self
         settignsTableView.dataSource = self
         username = Login.UsersInfo.username
+        
         print("dit is de Username: .\(username).")
      
+        
         ref = Database.database().reference()
-        print(" \(username)")
-
+        FriendInfo.append(MyFriendRequestInfo(pending: [], request: [], roommate: [], keypending: [], keyrequest: [], keyroommate: []))
         
-        dataBaseHandle = ref.child(username).child("FriendRequests").observe(.value, with: { (snapshot) in
-            self.requests.removeAll()
-            if snapshot.childrenCount > 0 {
-                print("Gaat nog goed")
-                for request in snapshot.children.allObjects as! [DataSnapshot] {
-                    let name = request.value as? String
-                    if let nameIs = name {
-                        self.requestName = nameIs
+        for (_ ,name) in sortOfFriends.enumerated() {
+            dataBaseHandle = ref?.child("\(username)").child("Roommates").child(name).observe(.value, with: { (snapshot) in
+                if name == "PendingFriendRequests" {
+                    self.FriendInfo[0].removeSomething(WhatToRemove: "pending")
+                } else if name == "FriendRequests" {
+                    self.FriendInfo[0].removeSomething(WhatToRemove: "request")
+                } else {
+                    self.FriendInfo[0].removeSomething(WhatToRemove: "roommate")
+                }
+                
+                if snapshot.childrenCount > 0 {
+                    for Requests in snapshot.children.allObjects as! [DataSnapshot]{
+                        if name == "PendingFriendRequests" {
+                            self.FriendInfo[0].addPending(name: Requests.value as! String, key: Requests.key)
+                        } else if name == "FriendRequests" {
+                            self.FriendInfo[0].addRequest(name: Requests.value as! String, key: Requests.key)
+                        } else {
+                            self.FriendInfo[0].addRoommate(name: Requests.value as! String, key: Requests.key)
+                        }
                     }
                 }
-                self.requests.append(friendRequest(Name: self.requestName, Accepted: false))
-                print(self.requests)
-
-            }
-        })
-        
-        print("Nu hier")
-        dataBaseHandle = ref?.child("\(username)").child("PendingFriendRequests").observe(.value, with: { (snapshot) in
-            if snapshot.childrenCount > 0 {
-
-                for request in snapshot.children.allObjects as! [DataSnapshot] {
-                    let name = request.value as? String
-                    if let nameIs = name {
-                        self.pendings.append(PendingRequest(Name: nameIs))
-                    }
-                    
-                }
-            }
-        })
-        
-        dataBaseHandle = ref?.child("Users").child(Login.UsersInfo.userID).child("huisgenoten").observe(.childAdded, with: { (snapshot) in
-            let roomies = snapshot.value as? String
-            if let roomiesName = roomies {
-                Login.UsersInfo.roommates.append(roomiesName)
-            }
-        })
-        print("Requests after loading", self.requests)
-        print("Pending after loading", self.pendings)
+                self.settignsTableView.reloadData()
+            })
+        }
+        self.roundButton = UIButton(type: .custom)
+        self.roundButton.setTitleColor(UIColor.blue, for: .normal)
+        self.roundButton.addTarget(self, action: #selector(AddNewRoommate(_:)), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(roundButton)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return list.count // your number of cell here
-        var rows = 0
+
         if section == 0 {
-            rows = Login.UsersInfo.roommates.count
+            return FriendInfo[0].roommate.count
+        } else if section == 1 {
+            return FriendInfo[0].request.count
+        } else {
+            return FriendInfo[0].pending.count
         }
-        if section == 1 {
-            print("How many requests",requests.count)
-            rows = requests.count
-        }
-        if section == 2 {
-            rows = pendings.count
-        }
-        return rows
+        
         
     }
     
@@ -135,20 +123,76 @@ class Settings: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath) as! SettingsCell
+        cell.delegate = self
         if indexPath.section == 0 {
-            cell.TitleCell.text = Login.UsersInfo.roommates[indexPath.row]
+            cell.TitleCell.text = FriendInfo[0].roommate[indexPath.row]
             cell.Button.setTitle("", for: .normal)
         } else if indexPath.section == 1 {
-            cell.TitleCell.text = requests[indexPath.row].Name
+            cell.TitleCell.text = FriendInfo[0].request[indexPath.row]
             cell.Button.setTitle("+", for: .normal)
+            cell.Button.setTitleColor(.blue, for: .normal)
         } else {
-            cell.TitleCell.text = pendings[indexPath.row].Name
-            cell.Button.setTitle("", for: .normal)
+            cell.TitleCell.text = FriendInfo[0].pending[indexPath.row]
+            cell.Button.setTitle("-", for: .normal)
+            cell.Button.setTitleColor(.blue, for: .normal)
         }
 
         return cell
     }
+    
+    override func viewWillLayoutSubviews() {
+        
+        roundButton.layer.cornerRadius = roundButton.layer.frame.size.width/2
+        roundButton.backgroundColor = UIColor.white
+        roundButton.clipsToBounds = true
+        roundButton.setTitle("+", for: .normal)
+        roundButton.setTitleColor(.blue, for: .normal)
+        roundButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([roundButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+            roundButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -16),
+            roundButton.widthAnchor.constraint(equalToConstant: 50),
+            roundButton.heightAnchor.constraint(equalToConstant: 50)])
+    }
+    
+    @IBAction func AddNewRoommate(_ sender: UIButton){
+        
+        self.performSegue(withIdentifier: "AddRoommate", sender: nil)
+        
+    }
+    
+    func didPressButton(sender: SettingsCell) {
+        if let indexPath = settignsTableView.indexPath(for: sender) {
+            
+            if indexPath.section == 1 {
+                let requestName = FriendInfo[0].request[indexPath.row]
+                let key = FriendInfo[0].keyrequest[indexPath.row]
+                let newKey = ref.child("\(username)").child("Roommates").child("Roommate").childByAutoId().key
+                
+                let updates = ["/\(requestName)/Roommates/PendingFriendRequests/\(key)/": NSNull(),
+                               "/\(username)/Roommates/FriendRequests/\(key)/": NSNull(),
+                               "/\(username)/Roommates/Roommate/\(newKey)/": "\(requestName)",
+                    "/\(requestName)/Roommates/Roommate/\(newKey)/": "\(username)"] as [String : Any]
+                
+                ref.updateChildValues(updates)
+                Login.UsersInfo.roommates.append("\(requestName)")
+                
+                
+            }
+            if indexPath.section == 2 {
+                let requestName = FriendInfo[0].pending[indexPath.row]
+                let key = FriendInfo[0].keypending[indexPath.row]
+
+                let updates = ["/\(username)/Roommates/PendingFriendRequests/\(key)/": NSNull(),
+                               "/\(requestName)/Roommates/FriendRequests/\(key)/": NSNull()]
+                
+                ref.updateChildValues(updates)
+                
+            }
+        }
+    }
+    
     
     @IBAction func unwindSettings(segue: UIStoryboardSegue) {
         

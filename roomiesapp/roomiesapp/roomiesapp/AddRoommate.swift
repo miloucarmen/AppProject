@@ -106,7 +106,6 @@ class AddRoommate: UITableViewController {
             tableView.reloadRows(at: [indexPath], with: .none)
 
             let key = ref.child("\(username)").child("Roommates").child("PendingFriendRequests").childByAutoId().key
-            
             self.ref?.child("\(username)").child("Roommates").child("PendingFriendRequests").child(key).setValue("\(requestName)")
             self.ref?.child(requestName).child("Roommates").child("FriendRequests").child(key).setValue("\(username)")
             

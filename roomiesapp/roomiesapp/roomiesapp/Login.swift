@@ -70,7 +70,7 @@ class Login: UIViewController {
                     }
                     
                     let userID = Auth.auth().currentUser!.uid
-   
+       
                     UsersInfo.username.append(username)
                     print("username: \(username)");
                     print("userID: \(userID)");

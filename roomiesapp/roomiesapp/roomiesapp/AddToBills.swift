@@ -15,6 +15,7 @@ import FirebaseDatabase
 class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     
+    @IBOutlet weak var tableInTable: UITableView!
     @IBOutlet weak var DescriptionTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var priceLabel: UILabel!
@@ -22,12 +23,40 @@ class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataS
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var switchButton: UISwitch!
     
+
     
     var Bill: overallData?
     var ref: DatabaseReference!
     var NumberArr: [Int] = []
     var j = 0
     let username = Login.UsersInfo.username
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        ref = Database.database().reference()
+        
+        if let Bill = Bill {
+            DescriptionTextField.text = Bill.what[0]
+            priceLabel.text = Bill.priceOrAmount[0]
+        }
+        
+        pricePicker.dataSource = self
+        pricePicker.delegate = self
+        let controller = Innertablecontroler()
+        tableInTable.dataSource = controller
+        tableInTable.delegate = controller
+        
+        while j <= 100{
+            NumberArr.append(j)
+            j += 1
+        }
+        
+        
+        updateSaveButtonState()
+        
+    }
+    
     
     @IBAction func textEditingChanged(_ sender: UITextField) {
         updateSaveButtonState()
@@ -86,31 +115,15 @@ class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataS
         priceLabel.text = "\(euro).\(cent)\(cents)"
         updateSaveButtonState()
     }
-        
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        ref = Database.database().reference()
-
-        if let Bill = Bill {
-            DescriptionTextField.text = Bill.what[0]
-            priceLabel.text = Bill.priceOrAmount[0]
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 2 {
+            let height = CGFloat(Login.UsersInfo.roommates.count * 70)
+            return height
+        } else {
+            return super.tableView(tableView, heightForRowAt: indexPath)
         }
-
-        pricePicker.dataSource = self
-        pricePicker.delegate = self
-        
-        
-        while j <= 100{
-            NumberArr.append(j)
-            j += 1
-        }
-        
-        
-        updateSaveButtonState()
-        
     }
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -144,24 +157,31 @@ class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataS
         
     }
     
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
 
-
-extension UITableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+class Innertablecontroler: NSObject, UITableViewDelegate, UITableViewDataSource  {
     
-    
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("HIERR: ",Login.UsersInfo.roommates.count)
+        return (Login.UsersInfo.roommates.count)
     }
- 
     
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IDLabelCell", for: indexPath) as! BillCollectionView
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "InsideTable") as? InsideTableCell else {
+            fatalError("Could not dequeue a cell") }
+        cell.TitleCell.text = "\(Login.UsersInfo.roommates[indexPath.row])"
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+
 }
+
+

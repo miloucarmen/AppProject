@@ -151,25 +151,30 @@ class BillsTableViewController: UITableViewController {
         
         var voorgeschoten: Double = 0
 //        print("header for section",section)
-//        print("which roommate are we looking at", section)
+//        print("which roommate are we looking at", data[section].roommate)
+//        print("Voorgeschoten", voorgeschoten)
 //
-//        print("\(0...data.count)")
 //
         for (index, _) in data.enumerated() {
-            var itemInList = 0
-//            print("person info",j)
-//
-            for bill in data[index].priceOrAmount {
-
+//            print("person info", name.roommate)
+//            print("INDEX", index)
+            for (number, bill) in data[index].priceOrAmount.enumerated() {
+                print("Bill", bill)
                 if index == section {
-                    voorgeschoten += (Double(bill)! / Double(data[index].withWho[itemInList].count))
+                    print("In here")
+                    voorgeschoten += (((Double(bill)! * (Double(data[index].withWho[number].count - 1)) ) / Double(data[index].withWho[number].count)))
+                } else {
+                    print("Over here")
+                    if data[index].withWho[number].contains(data[section].roommate) {
+                        print("Inside")
+                        voorgeschoten -= (Double(bill)! / Double(data[index].withWho[number].count))
+                    }
                 }
-                if index != section && data[index].withWho[itemInList].contains(username){
-                    voorgeschoten -= (Double(bill)! / Double(data[index].withWho[itemInList].count))
-                }
-                itemInList += 1
+              
             }
         }
+        
+        print("Totaal",voorgeschoten)
         return voorgeschoten
     }
     
