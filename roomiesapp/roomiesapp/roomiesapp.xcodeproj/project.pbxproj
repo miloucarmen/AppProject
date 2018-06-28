@@ -22,7 +22,6 @@
 		E813729820C94C290091F263 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813729720C94C290091F263 /* PageViewController.swift */; };
 		E813729A20C9DEC80091F263 /* AddToInventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813729920C9DEC80091F263 /* AddToInventory.swift */; };
 		E813729C20C9DFF40091F263 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813729B20C9DFF40091F263 /* Inventory.swift */; };
-		E81372A020CA81D70091F263 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E813729F20CA81D70091F263 /* Calendar.swift */; };
 		E81372A420CA8D960091F263 /* CalendarVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81372A320CA8D960091F263 /* CalendarVars.swift */; };
 		E81372AA20D3B6F30091F263 /* InventoryCel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81372A920D3B6F30091F263 /* InventoryCel.swift */; };
 		E81372AE20D7970D0091F263 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81372AD20D7970C0091F263 /* Login.swift */; };
@@ -33,6 +32,13 @@
 		E85232A320D9155E0000F7E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85232A220D9155D0000F7E8 /* ViewController.swift */; };
 		E85232A720D923490000F7E8 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85232A620D923490000F7E8 /* SettingsCell.swift */; };
 		E85232AB20D929960000F7E8 /* BillsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85232AA20D929960000F7E8 /* BillsTableViewController.swift */; };
+		E855C5A520E4379500C1D039 /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855C5A420E4379500C1D039 /* ShoppingList.swift */; };
+		E855C5A920E43A4E00C1D039 /* ShoppingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855C5A820E43A4D00C1D039 /* ShoppingListCell.swift */; };
+		E855C5AD20E43D8F00C1D039 /* AddToShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855C5AC20E43D8F00C1D039 /* AddToShoppingList.swift */; };
+		E855C5AF20E4500500C1D039 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855C5AE20E4500400C1D039 /* Calendar.swift */; };
+		E855C5B320E4B3D600C1D039 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855C5B220E4B3D600C1D039 /* CalendarCollectionViewCell.swift */; };
+		E855C5B720E4DDF200C1D039 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855C5B620E4DDF100C1D039 /* EventTableViewCell.swift */; };
+		E855C5BB20E5016600C1D039 /* AddEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855C5BA20E5016600C1D039 /* AddEvent.swift */; };
 		E8EE7C8820DC5AE400CCFA99 /* AddRoommateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EE7C8720DC5AE400CCFA99 /* AddRoommateCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +86,6 @@
 		E813729720C94C290091F263 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		E813729920C9DEC80091F263 /* AddToInventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToInventory.swift; sourceTree = "<group>"; };
 		E813729B20C9DFF40091F263 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
-		E813729F20CA81D70091F263 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		E81372A320CA8D960091F263 /* CalendarVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVars.swift; sourceTree = "<group>"; };
 		E81372A920D3B6F30091F263 /* InventoryCel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCel.swift; sourceTree = "<group>"; };
 		E81372AD20D7970C0091F263 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -91,6 +96,13 @@
 		E85232A220D9155D0000F7E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = /Users/gebruiker/Desktop/AppProject/roomiesapp/roomiesapp/roomiesapp/ViewController.swift; sourceTree = "<absolute>"; };
 		E85232A620D923490000F7E8 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		E85232AA20D929960000F7E8 /* BillsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillsTableViewController.swift; sourceTree = "<group>"; };
+		E855C5A420E4379500C1D039 /* ShoppingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
+		E855C5A820E43A4D00C1D039 /* ShoppingListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListCell.swift; sourceTree = "<group>"; };
+		E855C5AC20E43D8F00C1D039 /* AddToShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToShoppingList.swift; sourceTree = "<group>"; };
+		E855C5AE20E4500400C1D039 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		E855C5B220E4B3D600C1D039 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		E855C5B620E4DDF100C1D039 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		E855C5BA20E5016600C1D039 /* AddEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEvent.swift; sourceTree = "<group>"; };
 		E8EE7C8720DC5AE400CCFA99 /* AddRoommateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoommateCell.swift; sourceTree = "<group>"; };
 		EE003235A18B07A92172B25D /* Pods-roomiesappUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-roomiesappUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-roomiesappUITests/Pods-roomiesappUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,20 +183,23 @@
 		E813726620C7EA9A0091F263 /* roomiesapp */ = {
 			isa = PBXGroup;
 			children = (
+				E855C5BA20E5016600C1D039 /* AddEvent.swift */,
 				E8273D1B20DC35460021F861 /* AddRoommate.swift */,
 				E8EE7C8720DC5AE400CCFA99 /* AddRoommateCell.swift */,
 				E8273D1920DBD5EC0021F861 /* AddToBills.swift */,
 				E813729920C9DEC80091F263 /* AddToInventory.swift */,
+				E855C5AC20E43D8F00C1D039 /* AddToShoppingList.swift */,
 				E813726720C7EA9A0091F263 /* AppDelegate.swift */,
 				E813726E20C7EAA10091F263 /* Assets.xcassets */,
 				E821AB3B20DBA16B0011DB48 /* BillCell.swift */,
-				E809942E20E3822800831924 /* InsideTableCell.swift */,
 				E85232AA20D929960000F7E8 /* BillsTableViewController.swift */,
-				E809942C20E2378A00831924 /* Struct.swift */,
-				E813729F20CA81D70091F263 /* Calendar.swift */,
+				E855C5AE20E4500400C1D039 /* Calendar.swift */,
+				E855C5B220E4B3D600C1D039 /* CalendarCollectionViewCell.swift */,
 				E81372A320CA8D960091F263 /* CalendarVars.swift */,
+				E855C5B620E4DDF100C1D039 /* EventTableViewCell.swift */,
 				E813729520C7ED210091F263 /* GoogleService-Info.plist */,
 				E813727320C7EAA10091F263 /* Info.plist */,
+				E809942E20E3822800831924 /* InsideTableCell.swift */,
 				E813729B20C9DFF40091F263 /* Inventory.swift */,
 				E81372A920D3B6F30091F263 /* InventoryCel.swift */,
 				E813727020C7EAA10091F263 /* LaunchScreen.storyboard */,
@@ -193,6 +208,9 @@
 				E813729720C94C290091F263 /* PageViewController.swift */,
 				E85232A020D915210000F7E8 /* Settings.swift */,
 				E85232A620D923490000F7E8 /* SettingsCell.swift */,
+				E855C5A420E4379500C1D039 /* ShoppingList.swift */,
+				E855C5A820E43A4D00C1D039 /* ShoppingListCell.swift */,
+				E809942C20E2378A00831924 /* Struct.swift */,
 				E85232A220D9155D0000F7E8 /* ViewController.swift */,
 			);
 			path = roomiesapp;
@@ -433,16 +451,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E855C5B720E4DDF200C1D039 /* EventTableViewCell.swift in Sources */,
+				E855C5AD20E43D8F00C1D039 /* AddToShoppingList.swift in Sources */,
 				E81372AA20D3B6F30091F263 /* InventoryCel.swift in Sources */,
 				E813729A20C9DEC80091F263 /* AddToInventory.swift in Sources */,
 				E809942F20E3822800831924 /* InsideTableCell.swift in Sources */,
 				E85232AB20D929960000F7E8 /* BillsTableViewController.swift in Sources */,
+				E855C5A520E4379500C1D039 /* ShoppingList.swift in Sources */,
 				E85232A720D923490000F7E8 /* SettingsCell.swift in Sources */,
 				E821AB3C20DBA16C0011DB48 /* BillCell.swift in Sources */,
+				E855C5B320E4B3D600C1D039 /* CalendarCollectionViewCell.swift in Sources */,
 				E813729C20C9DFF40091F263 /* Inventory.swift in Sources */,
 				E809942D20E2378A00831924 /* Struct.swift in Sources */,
+				E855C5BB20E5016600C1D039 /* AddEvent.swift in Sources */,
+				E855C5A920E43A4E00C1D039 /* ShoppingListCell.swift in Sources */,
 				E85232A120D915210000F7E8 /* Settings.swift in Sources */,
 				E8EE7C8820DC5AE400CCFA99 /* AddRoommateCell.swift in Sources */,
+				E855C5AF20E4500500C1D039 /* Calendar.swift in Sources */,
 				E85232A320D9155E0000F7E8 /* ViewController.swift in Sources */,
 				E813726820C7EA9A0091F263 /* AppDelegate.swift in Sources */,
 				E81372A420CA8D960091F263 /* CalendarVars.swift in Sources */,
@@ -450,7 +475,6 @@
 				E8273D1A20DBD5EC0021F861 /* AddToBills.swift in Sources */,
 				E8273D1C20DC35460021F861 /* AddRoommate.swift in Sources */,
 				E81372AE20D7970D0091F263 /* Login.swift in Sources */,
-				E81372A020CA81D70091F263 /* Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

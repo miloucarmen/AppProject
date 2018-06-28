@@ -6,22 +6,29 @@
 //  Copyright © 2018 Gebruiker. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-protocol InsideTableCellDelegate : class {
+@objc protocol InsideTableCellDelegate {
     func SwitchEnabled(sender: InsideTableCell)
 }
 
 class InsideTableCell: UITableViewCell {
+    
     var delegate: InsideTableCellDelegate?
-    
-    @IBAction func ValueChange(_ sender: UISwitch) {
-        delegate?.SwitchEnabled(sender: self)
-    }
-    
     
     @IBOutlet weak var SwitchButton: UISwitch!
     @IBOutlet weak var TitleCell: UILabel!
+    
+    @IBAction func ValueChanged(_ sender: UISwitch) {
+        delegate?.SwitchEnabled(sender: self)
+    }
+    
+//    @IBAction func ValueChange(_ sender: AnyObject) {
+//
+//    }
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -50,7 +50,7 @@ class BillsTableViewController: UITableViewController {
                 print("IN HANDELLLL NOW FOR: ",name)
                 
                 if self.data.count < self.roommates.count {
-                    self.data.append(overallData(roommate: name, what: [""], priceOrAmount: [""], keys: [""], withWho: [[]], whoPutInList: [""]))
+                    self.data.append(overallData(roommateOrcurrentUser: name, itemBillOrEvent: [""], priceAmountOrStartTime: [""], keys: [""], withWho: [[]], whoPutInList: [""]))
                     print("Data die net alleen met naam gevuld is",self.data)
 
                 }
@@ -100,8 +100,8 @@ class BillsTableViewController: UITableViewController {
         if !openClose[section].opened {
             return 0
         }
-        print("Section \(section) has \(data[section].what.count) rows")
-        return data[section].what.count
+        print("Section \(section) has \(data[section].itemBillOrEvent.count) rows")
+        return data[section].itemBillOrEvent.count
         
         
     }
@@ -109,8 +109,8 @@ class BillsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellID") as? BillCell else {
             fatalError("Could not dequeue a cell") }
-        cell.Item.text = self.data[indexPath.section].what[indexPath.row]
-        cell.Costs.text = self.data[indexPath.section].priceOrAmount[indexPath.row]
+        cell.Item.text = self.data[indexPath.section].itemBillOrEvent[indexPath.row]
+        cell.Costs.text = self.data[indexPath.section].priceAmountOrStartTime[indexPath.row]
         return cell
     
     }
@@ -125,7 +125,7 @@ class BillsTableViewController: UITableViewController {
         
         
         let button = UIButton(type: .system)
-        button.setTitle("\(data[section].roommate)", for: .normal)
+        button.setTitle("\(data[section].roommateOrcurrentUser)", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.frame = CGRect(x: 16, y: 5, width: 375, height: 35)
         button.contentHorizontalAlignment = .left
@@ -138,8 +138,13 @@ class BillsTableViewController: UITableViewController {
         
         let label = UILabel()
         let labelName = WieBetaaltWat(section: section)
-        label.text = "\(labelName)"
-        label.frame = CGRect(x: 320, y: 5, width: 55, height: 35)
+        if labelName < 0 {
+            label.textColor = .red
+        } else {
+            label.textColor = .black
+        }
+        label.text = String(format: "%.2f", labelName)
+        label.frame = CGRect(x: 300, y: 5, width: 75, height: 35)
         
         view.addSubview(button)
         view.addSubview(label)
@@ -150,22 +155,17 @@ class BillsTableViewController: UITableViewController {
     func WieBetaaltWat (section: Int) -> Double {
         
         var voorgeschoten: Double = 0
-//        print("header for section",section)
-//        print("which roommate are we looking at", data[section].roommate)
-//        print("Voorgeschoten", voorgeschoten)
-//
-//
+
         for (index, _) in data.enumerated() {
-//            print("person info", name.roommate)
-//            print("INDEX", index)
-            for (number, bill) in data[index].priceOrAmount.enumerated() {
+            for (number, bill) in data[index].priceAmountOrStartTime.enumerated() {
                 print("Bill", bill)
+                
                 if index == section {
-                    print("In here")
+                
                     voorgeschoten += (((Double(bill)! * (Double(data[index].withWho[number].count - 1)) ) / Double(data[index].withWho[number].count)))
                 } else {
-                    print("Over here")
-                    if data[index].withWho[number].contains(data[section].roommate) {
+                    
+                    if data[index].withWho[number].contains(data[section].roommateOrcurrentUser) {
                         print("Inside")
                         voorgeschoten -= (Double(bill)! / Double(data[index].withWho[number].count))
                     }
@@ -191,7 +191,7 @@ class BillsTableViewController: UITableViewController {
         let section = button.tag
         var indexPaths = [IndexPath]()
         
-        for row in data[section].what.indices {
+        for row in data[section].itemBillOrEvent.indices {
             let indexPath = IndexPath(row: row, section: section)
             indexPaths.append(indexPath)
         }
@@ -211,7 +211,7 @@ class BillsTableViewController: UITableViewController {
             
             print("Hier")
             let indexPath = tableView.indexPathForSelectedRow!
-            if data[indexPath.section].roommate != username {
+            if data[indexPath.section].roommateOrcurrentUser != username {
                 return false
             }
         }
@@ -227,8 +227,8 @@ class BillsTableViewController: UITableViewController {
             withWho.removeAll()
             withWho.append(data[indexPath.section].withWho[indexPath.row])
             print(withWho)
-            print(selectedItem.roommate)
-            let sendData = overallData(roommate: selectedItem.roommate, what: [selectedItem.what[indexPath.row]], priceOrAmount: [selectedItem.priceOrAmount[indexPath.row]], keys: [selectedItem.keys[indexPath.row]], withWho: withWho, whoPutInList: [""])
+            print(selectedItem.roommateOrcurrentUser)
+            let sendData = overallData(roommateOrcurrentUser: selectedItem.roommateOrcurrentUser, itemBillOrEvent: [selectedItem.itemBillOrEvent[indexPath.row]], priceAmountOrStartTime: [selectedItem.priceAmountOrStartTime[indexPath.row]], keys: [selectedItem.keys[indexPath.row]], withWho: withWho, whoPutInList: [""])
             print("Data die wordt gestuurd", sendData)
             
             BillViewController.Bill = sendData

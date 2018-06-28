@@ -1,43 +1,57 @@
-//
-//  Struct.swift
-//  roomiesapp
-//
-//  Created by Gebruiker on 26-06-18.
-//  Copyright © 2018 Gebruiker. All rights reserved.
-//
+
 
 import Foundation
 
+// struct used in Bill, Inventory and shoppingList part of app
 struct overallData {
-    var roommate = String()
-    var what = [String]()
-    var priceOrAmount = [String]()
+    var roommateOrcurrentUser = String()
+    var itemBillOrEvent = [String]()
+    var priceAmountOrStartTime = [String]()
     var keys = [String]()
     var withWho = [[String]]()
     var whoPutInList = [String]()
     
     mutating func removeAllData() {
-        what.removeAll()
-        priceOrAmount.removeAll()
+        itemBillOrEvent.removeAll()
+        priceAmountOrStartTime.removeAll()
         keys.removeAll()
         withWho.removeAll()
     }
     
+    // removes all data put in list by a certain roommate
     mutating func removeByName(name: String) {
-        for (index, item) in whoPutInList.enumerated() {
+        let totalItems = whoPutInList.count - 1
+        
+        // goes through list in reversed order deletes last first so index doesn't go out of range
+        for (index, item) in whoPutInList.reversed().enumerated() {
             if item == name {
-                what.remove(at: index)
-                priceOrAmount.remove(at: index)
+                let valueToRemove = totalItems - index
+                itemBillOrEvent.remove(at: valueToRemove)
+                priceAmountOrStartTime.remove(at: valueToRemove)
+                whoPutInList.remove(at: valueToRemove)
+                keys.remove(at: valueToRemove)
             }
         }
     }
     
+    mutating func AddSorted(addTime: String, addEvent: String, addWho: String, addKey: String){
+        priceAmountOrStartTime.append(addTime)
+        priceAmountOrStartTime.sort()
+        
+        if let index = priceAmountOrStartTime.index(of: addTime) {
+            itemBillOrEvent.insert(addEvent, at: index)
+            keys.insert(addKey, at: index)
+            whoPutInList.insert(addWho, at: index)
+        }
+    }
+    
+    // appending fucntions
     mutating func AddWhat(addWhat: String) {
-        what.append(addWhat)
+        itemBillOrEvent.append(addWhat)
     }
     
     mutating func AddPrice(addPriceOrAmount: String) {
-        priceOrAmount.append(addPriceOrAmount)
+        priceAmountOrStartTime.append(addPriceOrAmount)
     }
     
     mutating func AddKeys(addKeys: String) {
@@ -53,15 +67,7 @@ struct overallData {
     }
 }
 
-struct friendRequest {
-    var Name = String()
-    var Accepted = Bool()
-}
-
-struct PendingRequest {
-    var Name = String()
-}
-
+// structures used in settings part of app
 struct UsersOfApp {
     var potentialRoommate = String()
     var sendFriendRequest = Bool()

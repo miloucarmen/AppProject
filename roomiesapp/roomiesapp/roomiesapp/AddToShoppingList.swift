@@ -1,8 +1,8 @@
 //
-//  AddToInventory.swift
+//  AddToShoppingList.swift
 //  roomiesapp
 //
-//  Created by Gebruiker on 07-06-18.
+//  Created by Gebruiker on 27-06-18.
 //  Copyright © 2018 Gebruiker. All rights reserved.
 //
 
@@ -10,34 +10,32 @@ import Foundation
 import UIKit
 import FirebaseDatabase
 
-class AddToInventory: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddToShoppingList: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var itemTextField: UITextField!
-    @IBOutlet weak var numberLabel: UILabel!
-    @IBOutlet weak var Number: UIPickerView!
+    @IBOutlet weak var numberPicker: UIPickerView!
+    @IBOutlet weak var amountLabel: UILabel!
     
-    var inventory: overallData?
+    var shoppingList: overallData?
     var ref: DatabaseReference!
     let username = Login.UsersInfo.username
 
-    @IBAction func textEditingChanged(_ sender: UITextField) {
-        updateSaveButtonState()
-    }
-    
-    
-    @IBAction func returnIsPressed(_ sender: UITextField) {
-        itemTextField.resignFirstResponder()
-    }
-
     func updateSaveButtonState() {
         saveButton.isEnabled = true
-        let text = itemTextField.text ?? ""
-        let numb = numberLabel.text ?? ""
-        if text.isEmpty || numb.isEmpty {
+        if (itemTextField.text?.isEmpty)! || (amountLabel.text?.isEmpty)! {
             saveButton.isEnabled = false
         }
     }
+    
+    @IBAction func ReturnPressed(_ sender: UITextField) {
+        updateSaveButtonState()
+    }
+    
+    @IBAction func EditingChanged(_ sender: UITextField) {
+        updateSaveButtonState()
+    }
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -53,22 +51,21 @@ class AddToInventory: UITableViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        numberLabel.text = "\(row)"
+        amountLabel.text = "\(row)"
         updateSaveButtonState()
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
         
-        if let inventory = inventory {
-            itemTextField.text = inventory.itemBillOrEvent[0]
-            numberLabel.text = inventory.priceAmountOrStartTime[0]
+        if let shoppingList = shoppingList {
+            itemTextField.text = shoppingList.itemBillOrEvent[0]
+            amountLabel.text = shoppingList.priceAmountOrStartTime[0]
         }
         
-        Number.dataSource = self
-        Number.delegate = self
+        numberPicker.dataSource = self
+        numberPicker.delegate = self
         
         updateSaveButtonState()
         
@@ -80,13 +77,13 @@ class AddToInventory: UITableViewController, UIPickerViewDelegate, UIPickerViewD
             return
         }
         
-        if let inventory = inventory {
-            let Item = ["\(itemTextField.text!)": numberLabel.text ?? "1"]
-            let updates = ["/\(inventory.whoPutInList)/inventory/\(inventory.keys[0])/": Item]
+        if let shoppingList = shoppingList {
+            let Item = ["\(itemTextField.text!)": amountLabel.text ?? "1"]
+            let updates = ["/\(shoppingList.whoPutInList)/shoppingList/\(shoppingList.keys[0])/": Item]
             ref.updateChildValues(updates)
             
         } else {
-            self.ref?.child("\(username)").child("inventory").childByAutoId().updateChildValues(["\(itemTextField.text!)": numberLabel.text ?? "1"])
+            self.ref?.child("\(username)").child("shoppingList").childByAutoId().updateChildValues(["\(itemTextField.text!)": amountLabel.text ?? "1"])
             print("Saved")
         }
         
@@ -95,4 +92,5 @@ class AddToInventory: UITableViewController, UIPickerViewDelegate, UIPickerViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
 }

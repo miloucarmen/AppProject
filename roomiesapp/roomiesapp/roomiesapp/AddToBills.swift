@@ -12,6 +12,8 @@ import FirebaseDatabase
 
 
 
+var withWho = [String]()
+
 class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     
@@ -20,43 +22,38 @@ class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataS
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var pricePicker: UIPickerView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var switchButton: UISwitch!
     
 
     
+    let username = Login.UsersInfo.username
     var Bill: overallData?
     var ref: DatabaseReference!
-    var NumberArr: [Int] = []
-    var j = 0
-    let username = Login.UsersInfo.username
-    
+    var controller: Innertablecontroler!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
         
         if let Bill = Bill {
-            DescriptionTextField.text = Bill.what[0]
-            priceLabel.text = Bill.priceOrAmount[0]
+            DescriptionTextField.text = Bill.itemBillOrEvent[0]
+            priceLabel.text = Bill.priceAmountOrStartTime[0]
+            for name in Bill.withWho[0]{
+                withWho.append(name)
+            }
+        } else {
+            withWho = Login.UsersInfo.roommates
         }
         
         pricePicker.dataSource = self
         pricePicker.delegate = self
-        let controller = Innertablecontroler()
+        
+        controller = Innertablecontroler()
         tableInTable.dataSource = controller
         tableInTable.delegate = controller
-        
-        while j <= 100{
-            NumberArr.append(j)
-            j += 1
-        }
-        
-        
+  
         updateSaveButtonState()
-        
     }
-    
+
     
     @IBAction func textEditingChanged(_ sender: UITextField) {
         updateSaveButtonState()
@@ -86,7 +83,7 @@ class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataS
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if component == 0 {
-            return (NumberArr.count)
+            return 100
         } else if component == 1{
             return 1
         } else {
@@ -96,11 +93,11 @@ class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataS
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if component == 0 {
-            return "\(NumberArr[row])"
+            return "\(row)"
         } else if component == 1 {
             return ","
         } else {
-            return "\(NumberArr[row])"
+            return "\(row)"
         }
     }
     
@@ -109,12 +106,13 @@ class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataS
         let selectedEuro = pricePicker.selectedRow(inComponent: 0)
         let selectedCent = pricePicker.selectedRow(inComponent: 2)
         let selectedCents = pricePicker.selectedRow(inComponent: 3)
-        let euro = NumberArr[selectedEuro ]
-        let cent = NumberArr[selectedCent]
-        let cents = NumberArr[selectedCents]
-        priceLabel.text = "\(euro).\(cent)\(cents)"
+
+        priceLabel.text = "\(selectedEuro).\(selectedCent)\(selectedCents)"
         updateSaveButtonState()
     }
+    
+    
+    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 {
@@ -128,53 +126,64 @@ class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         guard segue.identifier == "saveUnwindBills" else {
+            withWho.removeAll()
             return
         }
-
-        print("Trying to save......")
+        
+        var personData: [String: String] = [:]
+        for (index, name) in withWho.enumerated() {
+            personData["roommate\(index)"] = name
+        }
+        
+        let ItemPrice = ["\(DescriptionTextField.text!)": priceLabel.text!,
+                         "withWho": personData] as [String : Any]
         
         if let Bill = Bill {
-
-            let ItemPrice = ["\(DescriptionTextField.text!)": priceLabel.text!,
-                             "withWho": ["roommate1": "miloucarmen", "roommate2": "lol"]] as [String : Any]
-           
-            
             let updates = ["/\(username)/Bills/\(Bill.keys[0])/": ItemPrice]
             ref.updateChildValues(updates)
-            
-            print("updated")
+            withWho.removeAll()
         } else {
             
             let key = ref.child("\(username)").child("Bills").childByAutoId().key
-            let ItemPrice = ["\(DescriptionTextField.text!)": priceLabel.text!,
-                             "withWho": ["roommate1": "miloucarmen", "roommate2": "lol"]] as [String : Any]
-            
             let updates = ["/\(username)/Bills/\(key)/": ItemPrice]
-            
             ref.updateChildValues(updates)
-
-            print("saved")}
-        
+            withWho.removeAll()
+        }
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
 
-class Innertablecontroler: NSObject, UITableViewDelegate, UITableViewDataSource  {
+
+
+class Innertablecontroler: NSObject, UITableViewDelegate, UITableViewDataSource, InsideTableCellDelegate  {
+    
+    func SwitchEnabled(sender: InsideTableCell) {
+        let row = sender.SwitchButton.tag
+        if sender.SwitchButton.isOn {
+            withWho.append(Login.UsersInfo.roommates[row])
+        } else {
+            if let index = withWho.index(of: Login.UsersInfo.roommates[row]) {
+                withWho.remove(at: index)
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("HIERR: ",Login.UsersInfo.roommates.count)
         return (Login.UsersInfo.roommates.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "InsideTable") as? InsideTableCell else {
             fatalError("Could not dequeue a cell") }
+        cell.delegate = self
+        cell.SwitchButton.tag = indexPath.row
         cell.TitleCell.text = "\(Login.UsersInfo.roommates[indexPath.row])"
+        if withWho.index(of: "\(Login.UsersInfo.roommates[indexPath.row])") == nil {
+            cell.SwitchButton.isOn = false
+        }
         return cell
     }
     
