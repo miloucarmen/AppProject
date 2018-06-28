@@ -17,7 +17,7 @@ Demo account to check it out email: miloufuhri@gmail.com password: lalala
 ![alt text](https://github.com/miloucarmen/AppProject/blob/master/DOCS/Screenshots/Schermafbeelding%202018-06-28%20om%2020.01.26.png)
 ![alt text](https://github.com/miloucarmen/AppProject/blob/master/DOCS/Screenshots/Schermafbeelding%202018-06-28%20om%2020.04.36.png) 
 ![alt text](https://github.com/miloucarmen/AppProject/blob/master/DOCS/Screenshots/Schermafbeelding%202018-06-28%20om%2020.04.44.png)
-![alt text](https://github.com/miloucarmen/AppProject/blob/master/DOCS/Screenshots/Schermafbeelding%202018-06-04%20om%2014.38.47.png)
+![alt text](https://github.com/miloucarmen/AppProject/blob/master/DOCS/Screenshots/Schermafbeelding%202018-06-28%20om%2020.04.15.png)
 ![alt text](https://github.com/miloucarmen/AppProject/blob/master/DOCS/Screenshots/Schermafbeelding%202018-06-28%20om%2020.04.21.png)
 ![alt text](https://github.com/miloucarmen/AppProject/blob/master/DOCS/Screenshots/Schermafbeelding%202018-06-28%20om%2020.01.15.png) 
 ![alt text](https://github.com/miloucarmen/AppProject/blob/master/DOCS/Screenshots/Schermafbeelding%202018-06-28%20om%2020.01.33.png) 
