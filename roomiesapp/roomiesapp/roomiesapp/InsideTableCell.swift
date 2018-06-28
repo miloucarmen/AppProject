@@ -17,6 +17,7 @@ class InsideTableCell: UITableViewCell {
     var delegate: InsideTableCellDelegate?
     
     @IBOutlet weak var SwitchButton: UISwitch!
+    
     @IBOutlet weak var TitleCell: UILabel!
     
     @IBAction func ValueChanged(_ sender: UISwitch) {
