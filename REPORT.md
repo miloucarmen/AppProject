@@ -84,5 +84,11 @@ Add Roommate Scene is a UITableViewController it most important functions are vi
 This cell is very simple just a button and a label
 
 ## Challenges of this app
+### Challenges in general
+I noticed that I learned a lot more about how xcode and the language works through doing it from scratch. The big challenges where with the structure of the firebase data. I ended up making a whole different structure halfway through the project with cause loss of time because I had to go back and change it in the old ViewControllers. Another big challenge was with the addToBill scene. The table view nested in a table view caused a lot of weird errors, which I could not solve. I solved this with some help. 
+### Changes made
+I was originally going to use google calendars, which I ended up not using.
+### Was it a good thing
+For the calendar I was originally going to use google calendars. Due to a not for apple availble open api key I would have had to use a close api key. This would have meant that I needed an extra login screen and you could only use the app with google acounts. It would also have meant that people would have to login with google and firebase because this cant be connected. So it think it was a good decision to not use it. I like the solution I have now. 
 
 
