@@ -17,46 +17,46 @@ struct OpenClose {
 
 
 class BillsTableViewController: UITableViewController {
- 
-    
-    
-    var ref: DatabaseReference!
-    var dataBaseHandle: DatabaseHandle?
+
+    // constants
     let username = Login.UsersInfo.username
     let roommates = Login.UsersInfo.roommates
-    
-    
-    // load in from firebase
+
+    // variables created
     var data = [overallData]()
     var openClose = [OpenClose]()
     var i = 0
     var withWho = [[String]]()
     var loadTable = false
-
+    var ref: DatabaseReference!
+    var dataBaseHandle: DatabaseHandle?
     
+
+    // loads Bills in from firebase
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
         
+        // gives every roommate a openClose handle
         for _ in roommates {
             openClose.append(OpenClose(opened: false))
-            print(openClose)
         }
   
+        // iterates over roommates
         for (index, name) in roommates.enumerated(){
-            print("\(name)")
             
+            // finds Bill information
             dataBaseHandle = ref?.child("\(name)").child("Bills").observe(.value, with: { (snapshot) in
-                print("IN HANDELLLL NOW FOR: ",name)
                 
+                // if roommate doesnt have data struct yet adds one
                 if self.data.count < self.roommates.count {
                     self.data.append(overallData(roommateOrcurrentUser: name, itemBillOrEvent: [""], priceAmountOrStartTime: [""], keys: [""], withWho: [[]], whoPutInList: [""]))
-                    print("Data die net alleen met naam gevuld is",self.data)
-
                 }
-
+                
+                // empties old information
                 self.data[index].removeAllData()
 
+                // if there is data on firebase extracts it
                 if snapshot.childrenCount > 0 {
                     for itemskeys in snapshot.children.allObjects as! [DataSnapshot] {
                         
@@ -79,9 +79,6 @@ class BillsTableViewController: UITableViewController {
                         }
                     }
                 }
-                print("")
-                print("EVERYTHING IS HERE",self.data)
-                print("")
                 self.tableView.reloadData()
                 self.tableView.reloadSectionIndexTitles()
             })
@@ -90,40 +87,41 @@ class BillsTableViewController: UITableViewController {
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        print("Data Count is",data.count)
+        
         return data.count
     }
     
 
-    
+    // deceides number of rows depending on whether table section is closed or opened
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if !openClose[section].opened {
             return 0
         }
-        print("Section \(section) has \(data[section].itemBillOrEvent.count) rows")
         return data[section].itemBillOrEvent.count
-        
-        
     }
     
+    
+    // makes row cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellID") as? BillCell else {
             fatalError("Could not dequeue a cell") }
         cell.Item.text = self.data[indexPath.section].itemBillOrEvent[indexPath.row]
         cell.Costs.text = self.data[indexPath.section].priceAmountOrStartTime[indexPath.row]
         return cell
-    
     }
+   
     
-    
+    // makes custom header
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
+        // makes view and gives it a color
         let view = UIView()
         let blueIWant = UIColor(red:0.32, green:0.58, blue:0.59, alpha:1.0)
         view.backgroundColor = blueIWant
         
-        
-        
+        // makes button and sets its settings
         let button = UIButton(type: .system)
         button.setTitle("\(data[section].roommateOrcurrentUser)", for: .normal)
         button.setTitleColor(.black, for: .normal)
@@ -134,8 +132,7 @@ class BillsTableViewController: UITableViewController {
         button.addTarget(self, action: #selector(handelCloseOpen), for: .touchUpInside)
         
         
-        
-        
+        // appends a label to header
         let label = UILabel()
         let labelName = WieBetaaltWat(section: section)
         if labelName < 0 {
@@ -146,59 +143,63 @@ class BillsTableViewController: UITableViewController {
         label.text = String(format: "%.2f", labelName)
         label.frame = CGRect(x: 300, y: 5, width: 75, height: 35)
         
+        // adds label and button to view
         view.addSubview(button)
         view.addSubview(label)
         
         return view
     }
     
+    
+    // Calculates who gets what back
     func WieBetaaltWat (section: Int) -> Double {
         
         var voorgeschoten: Double = 0
-
+        
+        // iterates over all data of all roommates
         for (index, _) in data.enumerated() {
+            
+            // iterates over all bills payed by a roommate
             for (number, bill) in data[index].priceAmountOrStartTime.enumerated() {
-                print("Bill", bill)
                 
+                // calculation for what you have payed and what others have payed for you
                 if index == section {
-                
                     voorgeschoten += (((Double(bill)! * (Double(data[index].withWho[number].count - 1)) ) / Double(data[index].withWho[number].count)))
                 } else {
-                    
                     if data[index].withWho[number].contains(data[section].roommateOrcurrentUser) {
                         print("Inside")
                         voorgeschoten -= (Double(bill)! / Double(data[index].withWho[number].count))
                     }
                 }
-              
             }
         }
-        
-        print("Totaal",voorgeschoten)
         return voorgeschoten
     }
-    
-    
     
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 45
     }
     
+    
+    // function for if button in header is pressed
     @objc func handelCloseOpen(button: UIButton) {
         
         // which header is the button located
         let section = button.tag
         var indexPaths = [IndexPath]()
         
+        // adds all indexPaths of row that will be inserted or deleted
         for row in data[section].itemBillOrEvent.indices {
             let indexPath = IndexPath(row: row, section: section)
             indexPaths.append(indexPath)
         }
         
+        // changes status of openclose button
         let isOpened = openClose[section].opened
         openClose[section].opened = !isOpened
         
+        // deletes rows or inserts
         if isOpened {
             tableView.deleteRows(at: indexPaths, with: .fade)
         } else {
@@ -206,10 +207,14 @@ class BillsTableViewController: UITableViewController {
         }
     }
     
+    
+    // Only performs segue if you are the one that the Bill belongs to
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        // checks if its correct identifier
         if identifier == "showDetails" {
             
-            print("Hier")
+            // checks if you are "owner" of Bill
             let indexPath = tableView.indexPathForSelectedRow!
             if data[indexPath.section].roommateOrcurrentUser != username {
                 return false
@@ -218,25 +223,28 @@ class BillsTableViewController: UITableViewController {
         return true
     }
     
+    
+    // prepares data to be send to AddToBill scene so it can be changed and updated
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetails" {
+            
+            // constants
             let indexPath = tableView.indexPathForSelectedRow!
             let BillViewController = segue.destination as! AddToBills
-            
             let selectedItem = data[indexPath.section]
+            
             withWho.removeAll()
             withWho.append(data[indexPath.section].withWho[indexPath.row])
-            print(withWho)
-            print(selectedItem.roommateOrcurrentUser)
-            let sendData = overallData(roommateOrcurrentUser: selectedItem.roommateOrcurrentUser, itemBillOrEvent: [selectedItem.itemBillOrEvent[indexPath.row]], priceAmountOrStartTime: [selectedItem.priceAmountOrStartTime[indexPath.row]], keys: [selectedItem.keys[indexPath.row]], withWho: withWho, whoPutInList: [""])
-            print("Data die wordt gestuurd", sendData)
             
+            let sendData = overallData(roommateOrcurrentUser: selectedItem.roommateOrcurrentUser, itemBillOrEvent: [selectedItem.itemBillOrEvent[indexPath.row]], priceAmountOrStartTime: [selectedItem.priceAmountOrStartTime[indexPath.row]], keys: [selectedItem.keys[indexPath.row]], withWho: withWho, whoPutInList: [""])
+            
+            // data that is forwarded
             BillViewController.Bill = sendData
         }
     }
     
     
-    
+    // creates possibility for unwinding to this page
     @IBAction func unwindBills(_ sender: UIStoryboardSegue){
   
     }

@@ -318,7 +318,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1F-B6-cBO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2454" y="-1515"/>
+            <point key="canvasLocation" x="2505" y="-1836"/>
         </scene>
         <!--Stock Up-->
         <scene sceneID="Man-JQ-SId">
@@ -545,7 +545,8 @@
                                                             </tableViewCellContentView>
                                                             <connections>
                                                                 <outlet property="SwitchButton" destination="PVe-6u-yJW" id="Sxu-E4-Bhz"/>
-                                                                <outlet property="TitleCell" destination="eSi-Mh-V2z" id="me4-iL-oQI"/>
+                                                                <outlet property="switchButton" destination="PVe-6u-yJW" id="Mjf-is-P01"/>
+                                                                <outlet property="titleCell" destination="eSi-Mh-V2z" id="me4-iL-oQI"/>
                                                             </connections>
                                                         </tableViewCell>
                                                     </prototypes>
@@ -601,7 +602,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="za8-pH-N11" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3380" y="44"/>
+            <point key="canvasLocation" x="3380" y="416"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nXR-fY-Xiy">
@@ -620,7 +621,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ov-5a-slh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2532" y="-702"/>
+            <point key="canvasLocation" x="2505" y="-1026"/>
         </scene>
         <!--Bills-->
         <scene sceneID="faT-sj-3PO">
@@ -848,7 +849,6 @@
                                 <connections>
                                     <outlet property="amountLabel" destination="VSk-bh-HKP" id="myE-6e-wDR"/>
                                     <outlet property="titleLabel" destination="gFu-QO-OLP" id="534-19-OW6"/>
-                                    <segue destination="gS8-5p-ijX" kind="show" identifier="showDetails" trigger="accessoryAction" id="g6S-hP-aqf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -869,6 +869,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="gS8-5p-ijX" kind="show" identifier="showDetails" id="g6v-zo-GEo"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igH-me-nxO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="JHc-4J-oaz" userLabel="Exit" sceneMemberID="exit"/>
@@ -1484,6 +1487,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="rht-nV-1oD"/>
         <segue reference="o8c-29-4Ba"/>
-        <segue reference="g6S-hP-aqf"/>
+        <segue reference="g6v-zo-GEo"/>
     </inferredMetricsTieBreakers>
 </document>

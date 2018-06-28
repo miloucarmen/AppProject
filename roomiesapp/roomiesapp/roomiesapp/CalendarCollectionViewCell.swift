@@ -1,9 +1,8 @@
 //
-//  CalendarCollectionViewCell.swift
-//  roomiesapp
+//  CalendarCollectioViewCell
 //
-//  Created by Gebruiker on 28-06-18.
-//  Copyright © 2018 Gebruiker. All rights reserved.
+//  contains protocol for when button inside collectionview is pressed
+//
 //
 
 import UIKit

@@ -111,9 +111,6 @@ class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataS
         updateSaveButtonState()
     }
     
-    
-    
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 {
             let height = CGFloat(Login.UsersInfo.roommates.count * 70)
@@ -158,9 +155,12 @@ class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataS
 
 
 
+
+
 class Innertablecontroler: NSObject, UITableViewDelegate, UITableViewDataSource, InsideTableCellDelegate  {
     
     func SwitchEnabled(sender: InsideTableCell) {
+
         let row = sender.SwitchButton.tag
         if sender.SwitchButton.isOn {
             withWho.append(Login.UsersInfo.roommates[row])

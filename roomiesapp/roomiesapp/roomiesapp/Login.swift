@@ -15,6 +15,8 @@ import FirebaseDatabase
 
 class Login: UIViewController {
     
+    
+    // Outlets created
     @IBOutlet weak var signInSelector: UISegmentedControl!
     @IBOutlet weak var signInLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
@@ -23,10 +25,13 @@ class Login: UIViewController {
     @IBOutlet weak var UsernameTextField: UITextField!
     @IBOutlet weak var UsernameLabel: UILabel!
     
+    // variables created
     var ref: DatabaseReference!
     var isSignin: Bool = false
     var dataBaseHandle: DatabaseHandle?
     
+    
+    // init first screen
     override func viewDidLoad() {
         super.viewDidLoad()
         signInSelectorChange(signInSelector)
@@ -39,17 +44,19 @@ class Login: UIViewController {
     }
     
     
-    
+    // Changes screen according to with selector is tapped
     @IBAction func signInSelectorChange(_ sender: UISegmentedControl) {
         // flip boolian
         isSignin = !isSignin
         if isSignin {
+            // changes label names and hides a label
             signInLabel.text = "Sign in"
             UsernameLabel.isHidden = true
             UsernameTextField.isHidden = true
             submitButton.setTitle("Sign in", for: .normal)
         }
         else {
+            // changes names
             UsernameLabel.isHidden = false
             UsernameTextField.isHidden = false
             signInLabel.text = "Register"
@@ -57,6 +64,9 @@ class Login: UIViewController {
         }
         
     }
+    
+    
+    // Action when sign in is tapped
     @IBAction func SignInButtonTapped(_ sender: UIButton) {
         // Check if register or signin
         if let email = emailTextField.text, let password = passwordTextField.text, let username = UsernameTextField.text {
@@ -97,7 +107,7 @@ class Login: UIViewController {
         }
     }
     
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()

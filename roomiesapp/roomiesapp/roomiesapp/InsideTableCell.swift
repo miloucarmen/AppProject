@@ -2,8 +2,7 @@
 //  InsideTableCell.swift
 //  roomiesapp
 //
-//  Created by Gebruiker on 27-06-18.
-//  Copyright © 2018 Gebruiker. All rights reserved.
+//  
 //
 
 import Foundation
@@ -24,17 +23,10 @@ class InsideTableCell: UITableViewCell {
         delegate?.SwitchEnabled(sender: self)
     }
     
-//    @IBAction func ValueChange(_ sender: AnyObject) {
-//
-//    }
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

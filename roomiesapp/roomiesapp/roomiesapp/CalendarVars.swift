@@ -1,8 +1,10 @@
-
-
+//
+// Variables for the calendar
+//
+//
 import Foundation
 
-
+// collects current date
 let date = Date()
 let calend = Calendar.current
 

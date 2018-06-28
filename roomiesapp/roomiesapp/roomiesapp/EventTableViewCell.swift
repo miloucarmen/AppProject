@@ -1,9 +1,6 @@
 //
-//  EventTableViewCell.swift
-//  roomiesapp
-//
-//  Created by Gebruiker on 28-06-18.
-//  Copyright © 2018 Gebruiker. All rights reserved.
+//  EventTableViewCell
+//  Information for eventTableCell
 //
 
 import Foundation

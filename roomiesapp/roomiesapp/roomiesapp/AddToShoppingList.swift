@@ -21,6 +21,25 @@ class AddToShoppingList: UITableViewController, UIPickerViewDelegate, UIPickerVi
     var ref: DatabaseReference!
     let username = Login.UsersInfo.username
 
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        ref = Database.database().reference()
+        
+        if let shoppingList = shoppingList {
+            itemTextField.text = shoppingList.itemBillOrEvent[0]
+            amountLabel.text = shoppingList.priceAmountOrStartTime[0]
+        }
+        
+        numberPicker.dataSource = self
+        numberPicker.delegate = self
+        
+        updateSaveButtonState()
+        
+    }
+    
+    
     func updateSaveButtonState() {
         saveButton.isEnabled = true
         if (itemTextField.text?.isEmpty)! || (amountLabel.text?.isEmpty)! {
@@ -54,35 +73,22 @@ class AddToShoppingList: UITableViewController, UIPickerViewDelegate, UIPickerVi
         amountLabel.text = "\(row)"
         updateSaveButtonState()
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        ref = Database.database().reference()
-        
-        if let shoppingList = shoppingList {
-            itemTextField.text = shoppingList.itemBillOrEvent[0]
-            amountLabel.text = shoppingList.priceAmountOrStartTime[0]
-        }
-        
-        numberPicker.dataSource = self
-        numberPicker.delegate = self
-        
-        updateSaveButtonState()
-        
-    }
+
+  
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         guard segue.identifier == "saveUnwind" else {
             return
         }
-        
+    
         if let shoppingList = shoppingList {
+            
             let Item = ["\(itemTextField.text!)": amountLabel.text ?? "1"]
-            let updates = ["/\(shoppingList.whoPutInList)/shoppingList/\(shoppingList.keys[0])/": Item]
-            ref.updateChildValues(updates)
+            self.ref?.child("\(username)").child("shoppingList").child(shoppingList.keys[0]).updateChildValues(Item)
             
         } else {
+            print("Hier?")
             self.ref?.child("\(username)").child("shoppingList").childByAutoId().updateChildValues(["\(itemTextField.text!)": amountLabel.text ?? "1"])
             print("Saved")
         }

@@ -2,8 +2,7 @@
 //  AddRoommateCell.swift
 //  roomiesapp
 //
-//  Created by Gebruiker on 22-06-18.
-//  Copyright © 2018 Gebruiker. All rights reserved.
+//  custom cell info
 //
 
 import Foundation

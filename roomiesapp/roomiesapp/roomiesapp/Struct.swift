@@ -45,7 +45,7 @@ struct overallData {
         }
     }
     
-    // appending fucntions
+    // appending functions for certain item
     mutating func AddWhat(addWhat: String) {
         itemBillOrEvent.append(addWhat)
     }
@@ -73,6 +73,7 @@ struct UsersOfApp {
     var sendFriendRequest = Bool()
 }
 
+// structure
 struct MyFriendRequestInfo {
     var pending = [String]()
     var request = [String]()
@@ -81,6 +82,8 @@ struct MyFriendRequestInfo {
     var keyrequest = [String]()
     var keyroommate = [String]()
     
+    
+    // appending functions for certain items
     mutating func addRoommate(name: String, key: String){
         roommate.append(name)
         keyroommate.append(key)
@@ -94,6 +97,7 @@ struct MyFriendRequestInfo {
         keyrequest.append(key)
     }
     
+    // function to remove part of the structure
     mutating func removeSomething(WhatToRemove: String) {
         if WhatToRemove == "pending" {
             pending.removeAll()

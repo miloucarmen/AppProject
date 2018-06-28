@@ -1,9 +1,7 @@
 //
 //  SettingsCell.swift
-//  roomiesapp
-//
-//  Created by Gebruiker on 19-06-18.
-//  Copyright © 2018 Gebruiker. All rights reserved.
+//  Has Label and button for settingcell
+//  Has protocol for when button is pressed
 //
 
 import UIKit
