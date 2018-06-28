@@ -1,9 +1,6 @@
 # AppProject
 ## description
-App voor huisgenoten, hiermee kunnen ze bij houden wat er nog in huis is en wat gekocht moet worden.
-
-## Files
-xcode files are in another repo till merging errors can be sorted https://github.com/miloucarmen/roomiesapp.git
+App for roommates, for sharing events, shoppinglists, bills and inventory.
 
 ### main features
 * calendar shared with roommates
