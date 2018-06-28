@@ -1,6 +1,9 @@
-# AppProject
+# RoomiesApp
 ## description
-App for roommates, for sharing events, shoppinglists, bills and inventory.
+App for roommates to keep track of day to day business! Add your roommates on this app so you can keep track of upcoming events the other has. Or keep track of the inventory so you can add things to the shopping list before you run out. Make sure you never buy things double by the Bought! function. The last feature is the who paid what feature. Keep track of who paid for the last meal so you can return the favor.
+
+Demo account to check it out email: miloufuhri@gmail.com password: lalala
+
 
 ### main features
 * calendar shared with roommates
@@ -10,26 +13,7 @@ App for roommates, for sharing events, shoppinglists, bills and inventory.
 * Who paid what
 
 ## Design
-In de file design.md is schematisch weer gegeven hoe de app eruit moet komen te zien.
 
-## Components
-* Firebase
-* Google event calendar API/ Event kit API
-
-## Classes & structs
-* UIViewController
-* UITableViewController
-* Struct with event details
-
-
-## function
-Fuctions that are going to be made:
-* log in/ register function
-* add bill
-* add to inventory
-* add to shopping list
-* add/ edit/ delete event
-* add roommates
 
 ## Author
 * Milou Fuhri Snethlage
