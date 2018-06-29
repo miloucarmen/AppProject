@@ -4,7 +4,7 @@ App for roommates to keep track of day to day business! Add your roommates on th
 
 Demo account to check it out email: miloufuhri@gmail.com password: lalala
 
-Demo video: https://youtu.be/cXIxdw0O6Bw
+Demo video: https://youtu.be/tMSW_LYHLis
 
 ### main features
 * calendar shared with roommates
