@@ -29,11 +29,16 @@ class AddEvent: UITableViewController {
         ref = Database.database().reference()
     }
     
+    @IBAction func PressedReturn(_ sender: UITextField) {
+        updateSaveButtonState()
+        eventTextField.resignFirstResponder()
+    }
     
     // updates save button when text changes
     @IBAction func TextChanged(_ sender: UITextField) {
         updateSaveButtonState()
     }
+    
     
 
     // checks for updated state save button

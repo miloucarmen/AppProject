@@ -50,7 +50,7 @@ class AddToBills: UITableViewController, UIPickerViewDelegate, UIPickerViewDataS
         controller = Innertablecontroler()
         tableInTable.dataSource = controller
         tableInTable.delegate = controller
-  
+        tableInTable.tableFooterView = UIView()
         updateSaveButtonState()
     }
 

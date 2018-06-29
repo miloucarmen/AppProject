@@ -81,9 +81,11 @@ class AddToInventory: UITableViewController, UIPickerViewDelegate, UIPickerViewD
         }
         
         if let inventory = inventory {
-            let Item = ["\(itemTextField.text!)": numberLabel.text ?? "1"]
-            let updates = ["/\(inventory.whoPutInList)/inventory/\(inventory.keys[0])/": Item]
-            ref.updateChildValues(updates)
+            
+            
+            
+            self.ref?.child("\(username)").child("inventory").child(inventory.keys[0]).updateChildValues(["\(itemTextField.text!)": numberLabel.text ?? "1"])
+            
             
         } else {
             self.ref?.child("\(username)").child("inventory").childByAutoId().updateChildValues(["\(itemTextField.text!)": numberLabel.text ?? "1"])
