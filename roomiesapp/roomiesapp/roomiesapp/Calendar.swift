@@ -31,6 +31,7 @@ class ViewCalendar: UIViewController, UICollectionViewDelegate, UICollectionView
     var dayCounter = 0
     var ref: DatabaseReference!
     var eventController: EventTableViewController!
+    
 
     
     
@@ -41,6 +42,7 @@ class ViewCalendar: UIViewController, UICollectionViewDelegate, UICollectionView
         eventData.append(overallData(roommateOrcurrentUser: username, itemBillOrEvent: [], priceAmountOrStartTime: [], keys: [], withWho: [[]], whoPutInList: []))
         currentMonth = monthsList[month]
         monthLabel.text = "\(currentMonth) \(year)"
+
         if weekday == 0 {
             weekday = 7
         }
@@ -85,9 +87,9 @@ class ViewCalendar: UIViewController, UICollectionViewDelegate, UICollectionView
                 numberOfEmptyBoxes = 0
             }
             positionIndex = numberOfEmptyBoxes
-            
         case 1...:
-            nextNumberOfEmptyBoxes = (positionIndex + daysInMonths[month]) % 7
+            print(positionIndex)
+            nextNumberOfEmptyBoxes = (positionIndex + daysInMonths[month - 1]) % 7
             positionIndex = nextNumberOfEmptyBoxes
             
         case -1:
@@ -194,7 +196,7 @@ class ViewCalendar: UIViewController, UICollectionViewDelegate, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Calendar", for: indexPath) as! CalendarCollectionViewCell
-        cell.backgroundColor = UIColor.clear
+        cell.buttonLabel.backgroundColor = UIColor.clear
         cell.isHidden = false
         cell.buttonLabel.setTitleColor(.black, for: .normal)
         cell.delegate = self
@@ -227,7 +229,7 @@ class ViewCalendar: UIViewController, UICollectionViewDelegate, UICollectionView
         
         // marks current day
         if currentMonth == monthsList[calend.component(.month, from: date) - 1] && year == calend.component(.year, from: date) && Int(cell.buttonLabel.title(for: .normal)!)! == day {
-            cell.backgroundColor = .red
+            cell.buttonLabel.backgroundColor = .red
         }
         
         return cell
@@ -236,8 +238,14 @@ class ViewCalendar: UIViewController, UICollectionViewDelegate, UICollectionView
     func didPressButton(sender: CalendarCollectionViewCell) {
         
         print(monthNumberList[month])
+        
+        var dayButton = sender.buttonLabel.title(for: .normal)!
+        if Int(dayButton)! < 10 {
+            dayButton = "0\(dayButton)"
+        }
+        print()
         for (_, name) in roommates.enumerated() {
-            ref?.child("\(name)/Events/\(year)-\(monthNumberList[month])-\(sender.buttonLabel.title(for: .normal)!)/").observeSingleEvent(of: .value, with: { (snapshot) in
+            ref?.child("\(name)/Events/\(year)-\(monthNumberList[month])-\(dayButton)/").observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 if eventData[0].whoPutInList.contains(name) {
                     eventData[0].removeByName(name: name)

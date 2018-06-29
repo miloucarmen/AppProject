@@ -1114,7 +1114,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="24G-7w-RDV">
-                                <rect key="frame" x="33" y="213" width="309" height="241"/>
+                                <rect key="frame" x="33" y="213" width="309" height="286"/>
                                 <color key="backgroundColor" red="0.85523789819999996" green="0.9297569805" blue="0.93856180639999998" alpha="0.81346318490000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="4" id="KW1-Vz-DgY">
                                     <size key="itemSize" width="40" height="40"/>
@@ -1130,9 +1130,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYt-4G-AnW">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYt-4G-AnW">
                                                     <rect key="frame" x="6" y="8" width="31" height="27"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.85523789819999996" green="0.9297569805" blue="0.93856180639999998" alpha="0.81346318490000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <state key="normal" title="Label"/>
@@ -1142,6 +1141,10 @@
                                                 </button>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="NYt-4G-AnW" firstAttribute="top" secondItem="irO-Y6-fdq" secondAttribute="topMargin" constant="-12" id="IuR-rJ-Ikj"/>
+                                            <constraint firstItem="NYt-4G-AnW" firstAttribute="leading" secondItem="irO-Y6-fdq" secondAttribute="leadingMargin" constant="-10" id="PQt-1S-t3z"/>
+                                        </constraints>
                                         <size key="customSize" width="40" height="40"/>
                                         <connections>
                                             <outlet property="buttonLabel" destination="NYt-4G-AnW" id="iQ7-aQ-ltP"/>
@@ -1154,8 +1157,11 @@
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="elv-fP-Wmo">
-                                <rect key="frame" x="0.0" y="470" width="375" height="197"/>
+                                <rect key="frame" x="0.0" y="516" width="375" height="151"/>
                                 <color key="backgroundColor" red="0.85523789819999996" green="0.9297569805" blue="0.93856180639999998" alpha="0.81346318490000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="151" id="8AF-Sv-raQ"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="50" id="AGs-ie-fCp" customClass="EventTableViewCell" customModule="roomiesapp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
@@ -1245,24 +1251,24 @@
                         </subviews>
                         <color key="backgroundColor" red="0.85523789819999996" green="0.9297569805" blue="0.93856180639999998" alpha="0.81346318490000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="elv-fP-Wmo" firstAttribute="top" secondItem="24G-7w-RDV" secondAttribute="bottom" constant="16" id="0Uy-QI-FRz"/>
                             <constraint firstItem="uo8-jo-ofQ" firstAttribute="leading" secondItem="9ab-uL-J5E" secondAttribute="leading" constant="16" id="1VT-1h-N1b"/>
                             <constraint firstItem="oFc-fM-LSw" firstAttribute="top" secondItem="MUQ-Ws-96Z" secondAttribute="bottom" constant="46" id="3ba-Gz-aiA"/>
                             <constraint firstItem="elv-fP-Wmo" firstAttribute="leading" secondItem="9ab-uL-J5E" secondAttribute="leading" id="9hA-pF-l1b"/>
                             <constraint firstItem="24G-7w-RDV" firstAttribute="top" secondItem="NVh-GQ-q6j" secondAttribute="bottom" constant="8" symbolic="YES" id="Bb3-sl-97Q"/>
                             <constraint firstItem="NVh-GQ-q6j" firstAttribute="leading" secondItem="24G-7w-RDV" secondAttribute="leading" id="F7X-3G-hfC"/>
                             <constraint firstItem="MUQ-Ws-96Z" firstAttribute="centerX" secondItem="oFc-fM-LSw" secondAttribute="centerX" id="PVa-eN-8FB"/>
-                            <constraint firstItem="elv-fP-Wmo" firstAttribute="bottom" secondItem="9ab-uL-J5E" secondAttribute="bottom" id="Qer-jP-grE"/>
                             <constraint firstItem="24G-7w-RDV" firstAttribute="leading" secondItem="9ab-uL-J5E" secondAttribute="leading" constant="33" id="Y40-PO-n7e"/>
                             <constraint firstItem="9ab-uL-J5E" firstAttribute="trailing" secondItem="24G-7w-RDV" secondAttribute="trailing" constant="33" id="Yen-S7-JO8"/>
                             <constraint firstItem="RSu-Wr-QEP" firstAttribute="top" secondItem="MUQ-Ws-96Z" secondAttribute="bottom" constant="41" id="apz-dr-4dq"/>
-                            <constraint firstItem="9ab-uL-J5E" firstAttribute="trailing" secondItem="RSu-Wr-QEP" secondAttribute="trailing" constant="16" id="aua-sa-L2v"/>
                             <constraint firstItem="24G-7w-RDV" firstAttribute="top" secondItem="uo8-jo-ofQ" secondAttribute="bottom" constant="78" id="b3m-Zy-UGU"/>
+                            <constraint firstItem="RSu-Wr-QEP" firstAttribute="trailing" secondItem="ENr-TP-kt6" secondAttribute="trailingMargin" id="bNz-Um-TTR"/>
                             <constraint firstItem="MUQ-Ws-96Z" firstAttribute="top" secondItem="9ab-uL-J5E" secondAttribute="top" id="dNA-NK-Vdq"/>
+                            <constraint firstItem="elv-fP-Wmo" firstAttribute="bottom" secondItem="9ab-uL-J5E" secondAttribute="bottom" id="lRu-3a-P2f"/>
                             <constraint firstItem="elv-fP-Wmo" firstAttribute="trailing" secondItem="9ab-uL-J5E" secondAttribute="trailing" id="lVS-1S-3ag"/>
+                            <constraint firstItem="elv-fP-Wmo" firstAttribute="top" secondItem="24G-7w-RDV" secondAttribute="bottom" constant="17" id="mXJ-ia-V5A"/>
                             <constraint firstItem="MUQ-Ws-96Z" firstAttribute="leading" secondItem="ENr-TP-kt6" secondAttribute="leading" id="mbJ-U7-cvT"/>
                             <constraint firstItem="uo8-jo-ofQ" firstAttribute="top" secondItem="MUQ-Ws-96Z" secondAttribute="bottom" constant="41" id="ngX-bx-2jd"/>
-                            <constraint firstItem="9ab-uL-J5E" firstAttribute="bottom" secondItem="24G-7w-RDV" secondAttribute="bottom" constant="213" id="rBe-Uk-cl0"/>
+                            <constraint firstItem="elv-fP-Wmo" firstAttribute="top" secondItem="24G-7w-RDV" secondAttribute="bottom" constant="17" id="s8w-3G-y8L"/>
                             <constraint firstItem="24G-7w-RDV" firstAttribute="width" secondItem="NVh-GQ-q6j" secondAttribute="width" id="syB-a9-ED0"/>
                             <constraint firstItem="oFc-fM-LSw" firstAttribute="centerX" secondItem="ENr-TP-kt6" secondAttribute="centerX" id="zJk-uA-3t5"/>
                         </constraints>
